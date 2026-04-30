@@ -94,7 +94,7 @@ const Hero = ({ profile, mobile, titleScale = 1 }) => (
         </div>
       </div>
       <div style={{ marginTop: mobile ? 60 : 0 }}>
-        <PhotoSlideshow size={mobile ? 220 : 280} rounded="50%" />
+        <PhotoSlideshow size={mobile ? 220 : 280} rounded="50%" images={profile.photos} labels={profile.photos} />
         <div style={{ height: 30 }} />
         <Eyebrow style={{ display: 'block', marginTop: 8, textAlign: 'center' }}>
           {profile.role}

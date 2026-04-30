@@ -1,0 +1,44 @@
+name: Apply Uploaded Images
+
+# Runs whenever image files are pushed to public/images/.
+# Updates src/content.json with the correct paths so the site
+# rebuilds with real photos instead of placeholders.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'public/images/**'
+
+permissions:
+  contents: write
+
+jobs:
+  apply-images:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # Ensure we have push access via the built-in token
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Map image files to content.json
+        run: node .github/scripts/apply-images.js
+
+      - name: Commit updated content.json
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add src/content.json
+          # Only commit if content.json actually changed
+          if git diff --staged --quiet; then
+            echo "content.json unchanged — nothing to commit."
+          else
+            git commit -m "chore: sync image paths from public/images"
+            git push origin main
+          fi
