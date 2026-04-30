@@ -1,0 +1,234 @@
+{
+  "profile": {
+    "firstName": "Juliana",
+    "lastName": "Meyer",
+    "role": "Senior Product Marketing Manager",
+    "tagline": "GTM strategy for 40+ products. Tech PMM, fluent in GitHub and positioning.",
+    "location": "",
+    "linkedin": "https://linkedin.com/in/oijulianameyer",
+    "github": "https://github.com/julianameyer",
+    "email": "juliana@email.com",
+    "openTo": "Senior PMM · Lead PMM · Principal PMM · Head of Product Marketing",
+    "bio": [
+      "Senior Product Marketing Manager with 7+ years of experience in tech. Proven track record in product-led GTM strategy, developer marketing and documentation, and building go-to-market motions across growth-stage and enterprise SaaS.",
+      "Background in technical writing means I'm fluent in GitHub, OpenAPI, and developer audiences. Co-founder of Tech Writing BR (Brazil's first and only technical writing community, 300+ members), co-host of The Manu<script> podcast (30+ episodes, guests in 7+ countries)."
+    ],
+    "photos": ["profile-1", "profile-2", "profile-3", "profile-4", "profile-5"]
+  },
+  "metrics": [
+    { "value": "40+", "label": "products launched" },
+    { "value": "5M+", "label": "reach in 30 days" },
+    { "value": "163%", "label": "of quarter lead gen target" },
+    { "value": "61%", "label": "weekly active user lift" }
+  ],
+  "timeline": [
+    { "company": "IConnections", "role": "Senior PMM", "start": 2024, "end": "now", "current": true },
+    { "company": "VTEX", "role": "Global Product Marketing Manager", "start": 2022, "end": 2024 },
+    { "company": "VTEX", "role": "Tech Writing Manager", "start": 2021, "end": 2022 },
+    { "company": "VTEX", "role": "Sr. Tech Writer", "start": 2019, "end": 2021 }
+  ],
+  "projects": [
+    {
+      "id": "vtex-vision",
+      "title": "VTEX Vision — 17-Product Launch",
+      "company": "VTEX",
+      "year": "2023–24",
+      "tags": ["Global", "Campaign"],
+      "award": "Awwwards HM",
+      "metric": "5M+",
+      "metricLabel": "reach in 30 days",
+      "imgLabel": "campaign visual",
+      "problem": "VTEX needed to execute its first semiannual global product launch campaign covering 17 products simultaneously, coordinating across engineering, product, design, legal, PR, and external media partners — without a dedicated launch ops function.",
+      "solution": "Led the full GTM motion end-to-end as sole PMM. Built the launch playbook, coordinated 15+ internal teams and 4 external suppliers, created product messaging for 17 products, developed video scripts and storyboards, managed PR, social, email, and landing page production.",
+      "outcomes": [
+        "5M+ reach in 30 days",
+        "300+ media pieces within 30 days of launch",
+        "20+ B2B upsell opps impacted by lead-gen campaign",
+        "Awwwards honorable mention for VTEX Vision landing page"
+      ]
+    },
+    {
+      "id": "devportal",
+      "title": "VTEX Developer Portal",
+      "company": "VTEX",
+      "year": "2019–23",
+      "tags": ["Docs", "Leadership"],
+      "award": "DevPortal Award",
+      "metric": "35K+",
+      "metricLabel": "devs served monthly",
+      "imgLabel": "developer portal",
+      "problem": "VTEX's developer portal needed to serve 35,000+ developers across 80+ countries with documentation competitive with portals built by companies with significantly more resources — built from scratch.",
+      "solution": "Co-created the developer portal from scratch as an open-source project. Documented 50+ REST API endpoints and 30+ API integration guides using OpenAPI/Swagger 3.0. Built content architecture with reading journey design, diagrams, and glossaries. Developed UX Writing guidelines. As Technical Writing Manager, led a team of 4 writers across recruitment, onboarding, mentoring, and quality standards.",
+      "outcomes": [
+        "35,000+ developers across 80+ countries served monthly",
+        "DevPortal Award 2023 — Best Visual Interface (alongside Spotify, Miro, React, Mercedes-Benz)",
+        "Also nominated: Best Visual Design, Best API Reference Documentation",
+        "5 documentation reader personas from 123 survey responses",
+        "27+ tools and automations documented and maintained"
+      ]
+    },
+    {
+      "id": "mobile-feed",
+      "title": "Mobile Feed GTM",
+      "company": "iConnections",
+      "year": "2025–26",
+      "tags": ["Mobile", "Launch"],
+      "metric": "24%",
+      "metricLabel": "LP memberbase @ 5mo",
+      "imgLabel": "mobile app screenshot",
+      "problem": "iConnections LPs had no centralized, habit-forming surface in the mobile app. Platform engagement was event-driven and task-oriented — LPs had no reason to open the app between events.",
+      "solution": "Defined and executed the full GTM plan for the Mobile Feed — a personalized, social-media-style homepage for LPs. Co-created 200+ content cards with Research and Content teams. Produced the full launch campaign: 5 videos, 5 social media posts, 10 push notifications, and 1 email.",
+      "outcomes": [
+        "360 unique users in first 35 days",
+        "43,975 feed session starts at 5 months",
+        "24% of LP memberbase reached at 5mo — exceeds 10–20% 'established surface' benchmark",
+        "~2.3 sessions/user/week — above average for Finance/B2B apps"
+      ]
+    },
+    {
+      "id": "allocator-pro",
+      "title": "Allocator Pro Loyalty",
+      "company": "iConnections",
+      "year": "2026",
+      "tags": ["New Product"],
+      "metric": "200",
+      "metricLabel": "beta members",
+      "imgLabel": "loyalty dashboard",
+      "problem": "iConnections needed a structured way to increase platform stickiness among its highest-value users — allocators. No loyalty or membership program existed; retention was event-driven, not platform-driven.",
+      "solution": "Built a tiered membership loyalty program from concept to live product. Owned the full scope: tier architecture design, campaign strategy, in-platform experience design, and premium event logistics. Positioned Allocator Pro as a premium access layer linking platform engagement to exclusive in-person benefits.",
+      "outcomes": [
+        "200 beta members at launch",
+        "Built from zero to live product — full end-to-end ownership",
+        "Live product + membership management dashboard in platform"
+      ]
+    },
+    {
+      "id": "wau-growth",
+      "title": "Platform Weekly Active User Growth",
+      "company": "iConnections",
+      "year": "2025",
+      "tags": ["Lifecycle", "Enablement"],
+      "metric": "61%",
+      "metricLabel": "Weekly Active User Lift",
+      "imgLabel": "email & push designs",
+      "problem": "Platform retention was event-driven, not platform-driven. Events were the main driver of all platform activity.",
+      "solution": "Developed ongoing product comms including onboarding emails and push notifications. Created in-app messaging (posts, product tours, banners, surveys) to improve customer education and feature discoverability. Built a 2-month platform-only sales enablement program for client-facing teams — trainings, mock demos, pitch decks, and sell sheets.",
+      "outcomes": [
+        "61% structural lift in non-event WAU baseline (summer 2024 → summer 2025)",
+        "Subscriber WAU grew 19x over the tracked period",
+        "53% of users onboarded with new platform emails increased web sessions in first 30 days",
+        "Subscriber share of WAU reached 92% (Feb 2026), up from ~56% in July 2024"
+      ]
+    },
+    {
+      "id": "reengagement",
+      "title": "Re-engagement Experiment",
+      "company": "iConnections",
+      "year": "2025",
+      "tags": ["Experiment", "Lifecycle"],
+      "metric": "25.9%",
+      "metricLabel": "churned users reactivated",
+      "imgLabel": "email campaigns",
+      "problem": "A significant cohort of GPs and LPs had not logged into the platform for 90+ days, considered essentially churned. No prior reengagement strategy existed for this group.",
+      "solution": "Designed and executed a 4-month structured experiment: 5 campaign hypotheses tested, segmentation framework developed to identify cohorts most likely to respond, cross-referenced open rates, click rates, and platform activity to surface what drove re-engagement for LP and GP users.",
+      "outcomes": [
+        "25.9% of churned customers logged back in",
+        "~39,000+ emails delivered across 48 campaigns",
+        "5 campaign hypotheses tested over 4 months (Sep–Dec 2025)",
+        "~38% reactivation in highest-ROI segment (90–180 day dormant users)",
+        "Findings directly informed the 2026 full reengagement program"
+      ]
+    },
+    {
+      "id": "faststore",
+      "title": "VTEX FastStore GTM",
+      "company": "VTEX",
+      "year": "2023–24",
+      "tags": ["Developer GTM", "B2B"],
+      "metric": "Full-funnel",
+      "metricLabel": "digital + event + sales",
+      "imgLabel": "campaign visuals",
+      "problem": "FastStore was VTEX's most technically modern storefront but competed internally against legacy CMS solutions that existing clients already had. Dual positioning challenge: win externally against competing technologies and earn internal recommendation from VTEX sales and CS teams. Real decision-makers were developers.",
+      "solution": "Developed dual-layer GTM strategy for developer and business buyer audiences. Ran integrated campaign: online activation, sales enablement materials, internal training for commercial teams, and physical activation at VTEX Day (booth + mainstage presentation). Enterprise case study: Hearst.",
+      "outcomes": [
+        "Mainstage presentation at VTEX Day",
+        "Internal sales and CS alignment program",
+        "Enterprise case study: Hearst"
+      ]
+    },
+    {
+      "id": "tech-writing-br",
+      "title": "Tech Writing BR Community",
+      "company": "Independent",
+      "year": "2021–present",
+      "tags": ["Community", "Co-founder"],
+      "metric": "300+",
+      "metricLabel": "members",
+      "imgLabel": "community logo",
+      "problem": "Brazilian tech writers were isolated from each other and disconnected from the global practice. There was no local venue for professional development, peer support, or networking.",
+      "solution": "Co-founded Tech Writing BR with two colleagues — starting with a Google Slides deck, a logo, and a Google Meet link. Organized meetups, webinars, book clubs, and online forums. Built a national network with volunteers across the country.",
+      "outcomes": [
+        "300+ members",
+        "Only technical writing community in Brazil — 6+ years active",
+        "Volunteers across the country, ongoing book clubs and webinars",
+        "VTEX book club produced 7 public blog articles translating technical content from English to Portuguese"
+      ]
+    },
+    {
+      "id": "events",
+      "title": "Events & Conferences",
+      "company": "iConnections | VTEX | AIESEC",
+      "year": "2018–present",
+      "tags": ["Events", "Conferences"],
+      "metric": "30K",
+      "metricLabel": "attendees at flagship events",
+      "imgLabel": "event stage",
+      "problem": "Bringing digital product strategy to in-person experiences at scale. Events aren't just logistics — they're the moment your digital messaging has to survive contact with a room full of real people. From AIESEC congresses to iConnections flagship events in Miami, New York, Singapore, and São Paulo, the best product marketing happens when the platform and the physical experience reinforce each other.",
+      "solution": "Platform pavilions, product demos at scale, in-person campaign activations, and making thousands of allocators feel like they're at the center of something. At VTEX, I led the product demo at VTEX Day (30,000+ attendees) and the mainstage presentation of FastStore to a non-technical audience. At iConnections, I led the platform pavilion area design and activities, and the activation of our loyalty program (7,000+ attendees). Earlier in my career, I organized conferences for AIESEC in Brazil and Mexico — including international congresses with 1,000+ attendees.",
+      "outcomes": [
+        "6 cities across 4 continents (Miami, New York, Singapore, São Paulo, Mexico City, Panama City)",
+        "3 product demo areas in global conferences"
+      ]
+    },
+    {
+      "id": "manuscript-podcast",
+      "title": "The Manu<script> Podcast",
+      "company": "Independent",
+      "year": "2020–24",
+      "tags": ["Podcast", "Content"],
+      "metric": "30+",
+      "metricLabel": "episodes, 7+ countries",
+      "imgLabel": "podcast cover art",
+      "problem": "In 2020, technical writing was just beginning to surface as a career in Brazil, and there was no accessible way to learn how practitioners across the world were actually doing the work.",
+      "solution": "Co-created and hosted an independent podcast exploring the intersection of writing and technology. Responsible for guest research, scripting, interviewing, editing, and promotion. Expanded scope beyond tech writing to anyone at the intersection of writing and technology.",
+      "outcomes": [
+        "30+ episodes published",
+        "Guests from 7+ countries (Brazil, USA, UK, India, Romania, Singapore, and others)"
+      ]
+    },
+    {
+      "id": "frameroom",
+      "title": "FrameRoom — Side Project",
+      "company": "Independent",
+      "year": "2026",
+      "tags": ["Side Project", "Shipped"],
+      "metric": "Live",
+      "metricLabel": "open-source app",
+      "imgLabel": "app demo",
+      "problem": "Needed a way to visualize gallery wall layouts before committing to nail holes — built for personal use and then shipped. Also an opportunity to explore UX and AI-assisted development.",
+      "solution": "Browser-based gallery wall planning app built using AI-assisted development. Upload photos of art, remove backgrounds, visualize layouts on a virtual wall, drag-drop until it's right. No account, no install, no server.",
+      "outcomes": [
+        "Shipped as a live app",
+        "Open source on GitHub",
+        "1 shipped side project demonstrating ability to use AI as a development amplifier"
+      ]
+    }
+  ],
+  "skills": [
+    "GTM Strategy", "Positioning & Messaging", "Lifecycle Comms", "Sales Enablement",
+    "Developer PMM", "Data Analysis", "Video Scripting", "Content Strategy",
+    "API Documentation", "GitHub", "HubSpot", "Intercom", "Pendo", "Salesforce",
+    "Looker", "PowerBI", "Figma", "Notion", "OpenAPI/Swagger", "Sendgrid",
+    "Screenstudio", "ElevenLabs", "Descript"
+  ]
+}
