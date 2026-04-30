@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Juliana Meyer — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<style>
+  :root {
+    --brown-900: #2A1810;
+    --brown-800: #3D2817;
+    --brown-700: #5C3A21;
+    --brown-600: #7A553A;
+    --brown-500: #9C7B5F;
+    --brown-300: #D4C2B0;
+    --brown-200: #E8DDD0;
+    --brown-100: #F0E8DD;
+    --bg: #FFFFFF;
+    --bg-warm: #FBF7F2;
+    --accent: #E8B4A0;        /* muted dusty pink */
+    --accent-soft: #FBEEE7;   /* very soft pink wash */
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: #ECE6DD;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--brown-900);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .artboard-shell {
+    background: var(--bg);
+    box-shadow: 0 30px 80px rgba(45, 30, 22, 0.12);
+    overflow: hidden;
+  }
+  .canvas-wrap {
+    display: flex; flex-direction: column; align-items: center;
+    gap: 60px; padding: 60px 40px 120px;
+  }
+  .artboard-row {
+    display: flex; flex-direction: column; gap: 60px; align-items: center;
+  }
+  .artboard-label {
+    font-family: 'DM Sans', sans-serif; font-size: 11px;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: var(--brown-600); margin-bottom: 20px;
+    text-align: left;
+  }
+  .artboard-label strong {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 400; letter-spacing: -0.3px;
+    text-transform: none; display: block; color: var(--brown-900);
+    margin-bottom: 4px;
+  }
+  .top-banner {
+    background: var(--brown-900); color: #fff;
+    padding: 16px 40px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: 'DM Sans', sans-serif; font-size: 12px;
+    letter-spacing: 1.5px; text-transform: uppercase;
+  }
+  .top-banner em {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic; font-weight: 400; color: var(--accent);
+    text-transform: none; letter-spacing: 0;
+    font-size: 16px;
+  }
+
+  /* Content editor styling — sits inside the tweaks panel */
+  .ce-tabs { display: flex; gap: 4px; margin-bottom: 8px; flex-wrap: wrap; }
+  .ce-tab {
+    padding: 4px 8px; font-size: 10px; cursor: pointer;
+    background: rgba(0,0,0,0.05); border-radius: 5px; border: 0;
+    color: rgba(41,38,27,.7); font-family: inherit; font-weight: 500;
+  }
+  .ce-tab.active { background: var(--brown-900); color: #fff; }
+  .ce-field { display: flex; flex-direction: column; gap: 3px; margin-bottom: 8px; }
+  .ce-field label {
+    font-size: 10px; color: rgba(41,38,27,.6); font-weight: 500;
+  }
+  .ce-field input, .ce-field textarea {
+    font: 11px/1.4 ui-sans-serif, system-ui, sans-serif;
+    padding: 5px 7px; border: .5px solid rgba(0,0,0,.12);
+    border-radius: 5px; background: rgba(255,255,255,.7); resize: vertical;
+    color: inherit; outline: none;
+  }
+  .ce-field textarea { min-height: 50px; font-family: inherit; }
+  .ce-field input:focus, .ce-field textarea:focus {
+    border-color: var(--brown-900); background: #fff;
+  }
+  .ce-proj-list {
+    display: flex; flex-direction: column; gap: 2px;
+    max-height: 130px; overflow-y: auto; padding-right: 4px;
+    border: .5px solid rgba(0,0,0,.08); border-radius: 6px; padding: 4px;
+  }
+  .ce-proj {
+    padding: 5px 7px; cursor: pointer; border-radius: 4px;
+    font-size: 10.5px; display: flex; justify-content: space-between;
+  }
+  .ce-proj:hover { background: rgba(0,0,0,0.05); }
+  .ce-proj.active { background: var(--brown-900); color: #fff; }
+  .ce-proj small { opacity: 0.6; font-size: 9px; }
+  .ce-export-btn {
+    padding: 6px 10px; background: var(--brown-900); color: #fff;
+    border: 0; border-radius: 6px; font-size: 11px; font-weight: 500;
+    cursor: pointer; font-family: inherit; width: 100%;
+    margin-top: 4px;
+  }
+  .ce-help {
+    font-size: 10px; color: rgba(41,38,27,.55); line-height: 1.4;
+    padding: 6px 8px; background: rgba(232,180,160,.15);
+    border-radius: 6px;
+  }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<!-- Embed content.json so the file works standalone too -->
+<script type="application/json" id="content-data">
+</script>
+
+<script>
+// Load content.json synchronously so React can render it without flicker.
+// Falls back to embedded data if fetch fails (e.g. opened from filesystem).
+(async function() {
+  try {
+    const r = await fetch('content.json');
+    window.PORTFOLIO_CONTENT = await r.json();
+  } catch (e) {
+    window.PORTFOLIO_CONTENT = JSON.parse(document.getElementById('content-data').textContent || '{}');
+  }
+  window.dispatchEvent(new Event('content-ready'));
+})();
+</script>
+
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel" src="components.jsx"></script>
+<script type="text/babel" src="portfolio.jsx"></script>
+
+<script type="text/babel">
+const { useState, useEffect } = React;
+
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "titleScale": 0.9,
+  "layout": "grid",
+  "brownShade": "#2A1810"
+}/*EDITMODE-END*/;
+
+const BROWN_PRESETS = [
+  { name: 'Espresso', value: '#2A1810', shades: { 900: '#2A1810', 800: '#3D2817', 700: '#5C3A21', 600: '#7A553A', 500: '#9C7B5F', 300: '#D4C2B0', 200: '#E8DDD0', 100: '#F0E8DD' } },
+  { name: 'Cocoa',    value: '#3D2817', shades: { 900: '#3D2817', 800: '#4A2F1B', 700: '#6B4225', 600: '#8A5F3F', 500: '#A88566', 300: '#D8C5B3', 200: '#EBE0D2', 100: '#F2EADF' } },
+  { name: 'Mocha',    value: '#4A2E1F', shades: { 900: '#4A2E1F', 800: '#5C3825', 700: '#7A4E33', 600: '#966849', 500: '#B28C6E', 300: '#DCC9B7', 200: '#ECE2D5', 100: '#F4ECE2' } },
+  { name: 'Walnut',   value: '#5C3A21', shades: { 900: '#5C3A21', 800: '#6E4528', 700: '#8A5A36', 600: '#A4754C', 500: '#BF9876', 300: '#E0CFBC', 200: '#EFE6DA', 100: '#F6EFE6' } },
+  { name: 'Charcoal', value: '#1F1410', shades: { 900: '#1F1410', 800: '#2E1F18', 700: '#4A3329', 600: '#6B4D3F', 500: '#917565', 300: '#CDBBAB', 200: '#E5DAC C', 100: '#EFE4D8' } },
+];
+
+function applyBrownShade(hex) {
+  const preset = BROWN_PRESETS.find(p => p.value === hex) || BROWN_PRESETS[0];
+  const root = document.documentElement;
+  Object.entries(preset.shades).forEach(([k, v]) => {
+    root.style.setProperty(`--brown-${k}`, v);
+  });
+}
+
+// ─── Content Editor (lives inside Tweaks panel) ─────────────
+function ContentEditor({ content, setContent }) {
+  const [tab, setTab] = useState('profile');
+  const [activeProj, setActiveProj] = useState(0);
+
+  const updateField = (path, value) => {
+    setContent(prev => {
+      const next = JSON.parse(JSON.stringify(prev));
+      const keys = path.split('.');
+      let target = next;
+      for (let i = 0; i < keys.length - 1; i++) {
+        const k = keys[i];
+        target = isNaN(k) ? target[k] : target[parseInt(k)];
+      }
+      const lastKey = keys[keys.length - 1];
+      if (isNaN(lastKey)) target[lastKey] = value;
+      else target[parseInt(lastKey)] = value;
+      return next;
+    });
+  };
+
+  const exportJSON = () => {
+    const blob = new Blob([JSON.stringify(content, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = 'content.json'; a.click();
+    URL.revokeObjectURL(url);
+  };
+
+  return (
+    <>
+      <div className="ce-tabs">
+        {['profile', 'projects', 'metrics', 'skills'].map(t => (
+          <button key={t} className={`ce-tab ${tab === t ? 'active' : ''}`} onClick={() => setTab(t)}>
+            {t}
+          </button>
+        ))}
+      </div>
+
+      {tab === 'profile' && (
+        <>
+          <div className="ce-field">
+            <label>First name</label>
+            <input value={content.profile.firstName} onChange={e => updateField('profile.firstName', e.target.value)} />
+          </div>
+          <div className="ce-field">
+            <label>Last name</label>
+            <input value={content.profile.lastName} onChange={e => updateField('profile.lastName', e.target.value)} />
+          </div>
+          <div className="ce-field">
+            <label>Role</label>
+            <input value={content.profile.role} onChange={e => updateField('profile.role', e.target.value)} />
+          </div>
+          <div className="ce-field">
+            <label>Tagline</label>
+            <textarea value={content.profile.tagline} onChange={e => updateField('profile.tagline', e.target.value)} />
+          </div>
+          <div className="ce-field">
+            <label>Bio (paragraph 1)</label>
+            <textarea value={content.profile.bio[0]} onChange={e => updateField('profile.bio.0', e.target.value)} />
+          </div>
+          <div className="ce-field">
+            <label>Bio (paragraph 2)</label>
+            <textarea value={content.profile.bio[1] || ''} onChange={e => updateField('profile.bio.1', e.target.value)} />
+          </div>
+          <div className="ce-field">
+            <label>Email</label>
+            <input value={content.profile.email} onChange={e => updateField('profile.email', e.target.value)} />
+          </div>
+        </>
+      )}
+
+      {tab === 'projects' && (
+        <>
+          <div className="ce-proj-list">
+            {content.projects.map((p, i) => (
+              <div key={p.id} className={`ce-proj ${i === activeProj ? 'active' : ''}`} onClick={() => setActiveProj(i)}>
+                <span>{p.title}</span>
+                <small>{p.metric}</small>
+              </div>
+            ))}
+          </div>
+          {content.projects[activeProj] && (
+            <>
+              <div className="ce-field">
+                <label>Title</label>
+                <input value={content.projects[activeProj].title} onChange={e => updateField(`projects.${activeProj}.title`, e.target.value)} />
+              </div>
+              <div className="ce-field">
+                <label>Company / Year</label>
+                <div style={{ display: 'flex', gap: 4 }}>
+                  <input style={{ flex: 1 }} value={content.projects[activeProj].company} onChange={e => updateField(`projects.${activeProj}.company`, e.target.value)} />
+                  <input style={{ width: 70 }} value={content.projects[activeProj].year} onChange={e => updateField(`projects.${activeProj}.year`, e.target.value)} />
+                </div>
+              </div>
+              <div className="ce-field">
+                <label>Headline metric / Label</label>
+                <div style={{ display: 'flex', gap: 4 }}>
+                  <input style={{ width: 80 }} value={content.projects[activeProj].metric} onChange={e => updateField(`projects.${activeProj}.metric`, e.target.value)} />
+                  <input style={{ flex: 1 }} value={content.projects[activeProj].metricLabel} onChange={e => updateField(`projects.${activeProj}.metricLabel`, e.target.value)} />
+                </div>
+              </div>
+              <div className="ce-field">
+                <label>Problem</label>
+                <textarea value={content.projects[activeProj].problem} onChange={e => updateField(`projects.${activeProj}.problem`, e.target.value)} />
+              </div>
+              <div className="ce-field">
+                <label>Solution</label>
+                <textarea value={content.projects[activeProj].solution} onChange={e => updateField(`projects.${activeProj}.solution`, e.target.value)} />
+              </div>
+              <div className="ce-field">
+                <label>Outcomes (one per line)</label>
+                <textarea
+                  value={content.projects[activeProj].outcomes.join('\n')}
+                  onChange={e => updateField(`projects.${activeProj}.outcomes`, e.target.value.split('\n').filter(Boolean))}
+                />
+              </div>
+            </>
+          )}
+        </>
+      )}
+
+      {tab === 'metrics' && content.metrics.map((m, i) => (
+        <div key={i} className="ce-field">
+          <label>Metric {i + 1}</label>
+          <div style={{ display: 'flex', gap: 4 }}>
+            <input style={{ width: 70 }} value={m.value} onChange={e => updateField(`metrics.${i}.value`, e.target.value)} />
+            <input style={{ flex: 1 }} value={m.label} onChange={e => updateField(`metrics.${i}.label`, e.target.value)} />
+          </div>
+        </div>
+      ))}
+
+      {tab === 'skills' && (
+        <div className="ce-field">
+          <label>Skills (comma-separated)</label>
+          <textarea
+            value={content.skills.join(', ')}
+            onChange={e => setContent(prev => ({ ...prev, skills: e.target.value.split(',').map(s => s.trim()).filter(Boolean) }))}
+            style={{ minHeight: 100 }}
+          />
+        </div>
+      )}
+
+      <button className="ce-export-btn" onClick={exportJSON}>Download content.json</button>
+      <div className="ce-help">
+        Edit copy live → preview updates instantly. Download the JSON when done and ship it to Claude Code.
+      </div>
+    </>
+  );
+}
+
+// ─── Canvas with side-by-side desktop + mobile ─────────────
+function App() {
+  const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
+  const [content, setContent] = useState(window.PORTFOLIO_CONTENT);
+  const [contentReady, setContentReady] = useState(!!window.PORTFOLIO_CONTENT);
+
+  useEffect(() => {
+    if (!contentReady) {
+      const handler = () => {
+        setContent(window.PORTFOLIO_CONTENT);
+        setContentReady(true);
+      };
+      window.addEventListener('content-ready', handler);
+      return () => window.removeEventListener('content-ready', handler);
+    }
+  }, [contentReady]);
+
+  useEffect(() => {
+    applyBrownShade(t.brownShade);
+  }, [t.brownShade]);
+
+  if (!contentReady) {
+    return <div style={{ padding: 60, fontFamily: 'DM Sans', color: '#666' }}>Loading content…</div>;
+  }
+
+  return (
+    <>
+      <div className="top-banner">
+        <span>Juliana Meyer · <em>Hi-fi Mockup</em></span>
+        <span>Cormorant Garamond + DM Sans · Espresso + Dusty Pink</span>
+      </div>
+
+      <div className="canvas-wrap">
+        <div className="artboard-row">
+          {/* Desktop */}
+          <div>
+            <div className="artboard-label">
+              <strong>Desktop</strong>
+              1440 × responsive
+            </div>
+            <div className="artboard-shell" style={{ width: 1280 }}>
+              <Portfolio content={content} mobile={false} titleScale={t.titleScale} layout={t.layout} />
+            </div>
+          </div>
+
+          {/* Mobile */}
+          <div>
+            <div className="artboard-label">
+              <strong>Mobile</strong>
+              390 × responsive
+            </div>
+            <div className="artboard-shell" style={{ width: 390 }}>
+              <Portfolio content={content} mobile={true} titleScale={t.titleScale} layout="list" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <TweaksPanel title="Portfolio Tweaks">
+        <TweakSection label="Content">
+          <ContentEditor content={content} setContent={setContent} />
+        </TweakSection>
+
+        <TweakSection label="Visual">
+          <TweakSlider
+            label="Title scale"
+            value={t.titleScale}
+            min={0.7} max={1.3} step={0.05} unit="×"
+            onChange={v => setTweak('titleScale', v)}
+          />
+          <TweakRadio
+            label="Card layout (desktop)"
+            value={t.layout}
+            options={['grid', 'list']}
+            onChange={v => setTweak('layout', v)}
+          />
+          <TweakSelect
+            label="Brown shade"
+            value={t.brownShade}
+            options={BROWN_PRESETS.map(p => ({ value: p.value, label: p.name }))}
+            onChange={v => setTweak('brownShade', v)}
+          />
+        </TweakSection>
+      </TweaksPanel>
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>

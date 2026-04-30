@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Juliana Meyer — Portfolio v2 Wireframes</title>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="design-canvas.jsx" type="text/babel"></script>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #f0eee9; }
+
+.wf { font-family: 'Caveat', cursive; }
+.mono { font-family: 'Space Mono', monospace; }
+
+.tag {
+  display: inline-block;
+  border: 1.5px solid #333;
+  border-radius: 2px;
+  padding: 2px 7px;
+  font-family: 'Space Mono', monospace;
+  font-size: 8px;
+  background: #fff;
+  white-space: nowrap;
+}
+.tag-filled { background: #333; color: #fff; }
+.tag-award { background: #f5e6c8; border-color: #c8a05a; }
+
+.img-ph {
+  background: repeating-linear-gradient(
+    45deg, #ddd, #ddd 1px, #f5f4f1 1px, #f5f4f1 8px
+  );
+  border: 2px solid #bbb;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Space Mono', monospace;
+  font-size: 9px; color: #999; text-align: center;
+  flex-shrink: 0;
+}
+.img-ph-dark {
+  background: repeating-linear-gradient(
+    45deg, #444, #444 1px, #333 1px, #333 8px
+  );
+  border-color: #555;
+  color: #aaa;
+}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+
+const W = 480;
+
+// ─── Shared data ──────────────────────────────────────────────
+
+const PROJECTS = [
+  {
+    id: 'mobile-feed',
+    title: 'Mobile Feed GTM',
+    company: 'iConnections',
+    year: '2025–26',
+    tags: ['Mobile', 'Launch'],
+    metric: '24%', metricLabel: 'LP memberbase @ 5 months',
+    imgLabel: 'mobile app screenshot / gif',
+    imgAspect: 0.65,
+    problem: 'LPs had no reason to open the app between events. Platform engagement was entirely event-driven.',
+    solution: '5 videos, 200+ content cards, 10 push notifs, 1 email. Defined full GTM for a personalized social-style homepage.',
+    outcomes: ['360 unique users in first 35 days', '43,975 feed session starts', '24% of LP memberbase reached at 5mo', '~2.3 sessions/user/week — above finance benchmark'],
+  },
+  {
+    id: 'vtex-vision',
+    title: 'VTEX Vision — 17-Product Launch',
+    company: 'VTEX',
+    year: '2023–24',
+    tags: ['Global', 'Campaign'],
+    award: '🏅 Awwwards',
+    metric: '5M+', metricLabel: 'reach in 30 days',
+    imgLabel: 'landing page / campaign visual',
+    imgAspect: 0.55,
+    problem: 'First-ever semiannual global launch across 17 products. No dedicated launch ops function.',
+    solution: 'End-to-end GTM: launch playbook, PR, social, video scripts, landing page, 15+ teams coordinated.',
+    outcomes: ['5M+ reach in 30 days', '300+ media pieces', '20+ B2B upsell opps', 'Awwwards honorable mention'],
+  },
+  {
+    id: 'allocator-pro',
+    title: 'Allocator Pro Loyalty Program',
+    company: 'iConnections',
+    year: '2026',
+    tags: ['New Product'],
+    metric: '200', metricLabel: 'beta members at launch',
+    imgLabel: 'loyalty tier UI / dashboard',
+    imgAspect: 0.6,
+    problem: 'No loyalty program existed. Retention was event-driven, not platform-driven.',
+    solution: 'Built tiered membership from concept to live product: architecture, campaign, in-platform experience, event logistics.',
+    outcomes: ['200 beta members', 'Built from zero — end-to-end ownership', 'Live product + membership dashboard'],
+  },
+  {
+    id: 'wau-growth',
+    title: 'Platform Engagement & WAU Growth',
+    company: 'iConnections',
+    year: '2025',
+    tags: ['Lifecycle', 'Enablement'],
+    metric: '61%', metricLabel: 'WAU baseline lift',
+    imgLabel: 'email / push notification designs',
+    imgAspect: 0.6,
+    problem: 'Events drove 100% of platform activity. Nothing kept users between events.',
+    solution: 'Onboarding emails, push notifications, in-app tours, banners, surveys. 2-month sales enablement program.',
+    outcomes: ['61% WAU baseline growth', '19x subscriber WAU', '53% of new users increased sessions in 30d', 'Subscriber share of WAU: 92%'],
+  },
+  {
+    id: 'reengagement',
+    title: 'Inactive User Re-engagement Experiment',
+    company: 'iConnections',
+    year: '2025',
+    tags: ['Experiment', 'Lifecycle'],
+    metric: '25.9%', metricLabel: 'churned users reactivated',
+    imgLabel: 'email campaign visuals / data',
+    imgAspect: 0.55,
+    problem: 'Large cohort of GPs/LPs dormant 90+ days. No reengagement strategy existed.',
+    solution: '4-month structured experiment: 5 campaign hypotheses, segmentation framework, 48 email campaigns.',
+    outcomes: ['25.9% of churned users logged back in', '~39K emails delivered', 'Findings drove 2026 full program', '38% reactivation in top segment'],
+  },
+  {
+    id: 'devportal',
+    title: 'VTEX Developer Portal',
+    company: 'VTEX',
+    year: '2019–23',
+    tags: ['Docs', 'Leadership'],
+    award: '🏆 DevPortal Award',
+    metric: '35K+', metricLabel: 'devs served monthly',
+    imgLabel: 'developer portal screenshot',
+    imgAspect: 0.55,
+    problem: 'Serve 35K+ global developers competitively on limited resources.',
+    solution: 'Co-created open-source portal from scratch. Led team of 4 writers. 50+ APIs documented. UX writing guidelines.',
+    outcomes: ['35K devs across 80+ countries', 'DevPortal Award 2023 — Best Visual Interface', 'Alongside Spotify, Miro, React, Mercedes-Benz'],
+  },
+  {
+    id: 'faststore',
+    title: 'VTEX FastStore GTM',
+    company: 'VTEX',
+    year: '2023–24',
+    tags: ['Developer GTM', 'B2B'],
+    metric: 'Full-funnel', metricLabel: 'digital + event + sales',
+    imgLabel: 'campaign / booth visuals',
+    imgAspect: 0.6,
+    problem: 'FastStore competed internally vs. legacy CMS. Developers were real decision-makers.',
+    solution: 'Dual-layer GTM: developer community + business buyer. VTEX Day booth, mainstage, Hearst case study.',
+    outcomes: ['Mainstage at VTEX Day', 'Internal sales/CS alignment', 'Enterprise case: Hearst'],
+  },
+  {
+    id: 'frameroom',
+    title: 'FrameRoom — Side Project',
+    company: 'Independent',
+    year: '2026',
+    tags: ['Side Project', 'Shipped'],
+    metric: 'Live', metricLabel: 'open-source, no login',
+    imgLabel: 'app screenshot / demo gif',
+    imgAspect: 0.6,
+    problem: 'Needed to visualize gallery wall layouts before nailing holes.',
+    solution: 'Browser-based gallery wall planner. AI-assisted dev. Upload photos, remove backgrounds, drag layouts.',
+    outcomes: ['Shipped as live app', 'Open source on GitHub', 'Demonstrates AI as dev amplifier'],
+  },
+];
+
+// ─── Primitives ───────────────────────────────────────────────
+
+const SectionLabel = ({ children, color = '#333' }) => (
+  <span className="mono" style={{ fontSize: 8, letterSpacing: 2, textTransform: 'uppercase', borderBottom: `2px solid ${color}`, paddingBottom: 1, color }}>
+    {children}
+  </span>
+);
+
+const LinkedInBtn = ({ style = {}, dark }) => (
+  <div style={{
+    display: 'inline-flex', alignItems: 'center', gap: 6,
+    background: dark ? '#fff' : '#333', color: dark ? '#333' : '#fff',
+    border: '2px solid #333', padding: '7px 14px', cursor: 'pointer',
+    fontFamily: 'Space Mono, monospace', fontSize: 10, fontWeight: 700,
+    borderRadius: 2, ...style
+  }}>
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+    </svg>
+    Connect on LinkedIn
+  </div>
+);
+
+// Project card with click-to-open modal
+const ProjectCard = ({ project, onOpen, variant = 'default' }) => {
+  const imgH = Math.round(W * 0.5 * project.imgAspect * 0.7);
+
+  if (variant === 'image-top') {
+    return (
+      <div onClick={() => onOpen(project)} style={{
+        border: '2px solid #333', background: '#fff', cursor: 'pointer',
+        transition: 'transform 0.15s',
+      }}
+        onMouseEnter={e => e.currentTarget.style.transform = 'translateY(-2px)'}
+        onMouseLeave={e => e.currentTarget.style.transform = ''}
+      >
+        <div className="img-ph" style={{ height: imgH, borderBottom: '2px solid #bbb', borderRadius: 0 }}>
+          {project.imgLabel}
+        </div>
+        <div style={{ padding: '10px 12px' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 8 }}>
+            <div>
+              <div className="wf" style={{ fontSize: 15, fontWeight: 700, lineHeight: 1.2 }}>{project.title}</div>
+              <div className="mono" style={{ fontSize: 7, color: '#888', marginTop: 2 }}>{project.company} · {project.year}</div>
+            </div>
+            <div style={{ textAlign: 'right', flexShrink: 0 }}>
+              <div className="wf" style={{ fontSize: 18, fontWeight: 700, lineHeight: 1 }}>{project.metric}</div>
+              <div className="wf" style={{ fontSize: 9, color: '#888', lineHeight: 1.2 }}>{project.metricLabel}</div>
+            </div>
+          </div>
+          <div style={{ display: 'flex', gap: 4, marginTop: 8, flexWrap: 'wrap' }}>
+            {project.tags.map(t => <span key={t} className="tag" style={{ fontSize: 7 }}>{t}</span>)}
+            {project.award && <span className="tag tag-award" style={{ fontSize: 7 }}>{project.award}</span>}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (variant === 'horizontal') {
+    return (
+      <div onClick={() => onOpen(project)} style={{
+        border: '2px solid #333', background: '#fff', cursor: 'pointer',
+        display: 'flex', height: 90,
+      }}
+        onMouseEnter={e => e.currentTarget.style.background = '#f9f8f5'}
+        onMouseLeave={e => e.currentTarget.style.background = '#fff'}
+      >
+        <div className="img-ph" style={{ width: 120, borderRight: '2px solid #bbb', borderRadius: 0, flexShrink: 0, fontSize: 8 }}>
+          {project.imgLabel}
+        </div>
+        <div style={{ padding: '10px 12px', flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <div className="wf" style={{ fontSize: 14, fontWeight: 700 }}>{project.title}</div>
+            <div style={{ textAlign: 'right', flexShrink: 0 }}>
+              <div className="wf" style={{ fontSize: 16, fontWeight: 700 }}>{project.metric}</div>
+              <div className="wf" style={{ fontSize: 8, color: '#888' }}>{project.metricLabel}</div>
+            </div>
+          </div>
+          <div className="mono" style={{ fontSize: 7, color: '#888', marginTop: 2 }}>{project.company} · {project.year}</div>
+          <div style={{ display: 'flex', gap: 4, marginTop: 5 }}>
+            {project.tags.map(t => <span key={t} className="tag" style={{ fontSize: 6 }}>{t}</span>)}
+            {project.award && <span className="tag tag-award" style={{ fontSize: 6 }}>{project.award}</span>}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // default: image fills top 60%, minimal text below
+  return (
+    <div onClick={() => onOpen(project)} style={{
+      border: '2px solid #333', background: '#fff', cursor: 'pointer',
+      overflow: 'hidden', position: 'relative',
+    }}
+      onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.01)'}
+      onMouseLeave={e => e.currentTarget.style.transform = ''}
+    >
+      <div className="img-ph" style={{ height: 110, borderBottom: '2px solid #bbb', borderRadius: 0 }}>
+        {project.imgLabel}
+      </div>
+      <div style={{ padding: '8px 10px', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
+        <div>
+          <div className="wf" style={{ fontSize: 13, fontWeight: 700, lineHeight: 1.2 }}>{project.title}</div>
+          <div className="mono" style={{ fontSize: 7, color: '#888', marginTop: 2 }}>{project.company}</div>
+        </div>
+        <div className="wf" style={{ fontSize: 16, fontWeight: 700, textAlign: 'right', flexShrink: 0 }}>
+          {project.metric}
+          {project.award && <div className="tag tag-award" style={{ fontSize: 6, marginTop: 2 }}>{project.award}</div>}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// Modal overlay
+const Modal = ({ project, onClose }) => {
+  if (!project) return null;
+  return (
+    <div onClick={onClose} style={{
+      position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.55)',
+      display: 'flex', alignItems: 'center', justifyContent: 'center',
+      zIndex: 100, padding: 20,
+    }}>
+      <div onClick={e => e.stopPropagation()} style={{
+        background: '#fff', border: '2px solid #333', width: '100%', maxWidth: 400,
+        maxHeight: '85%', overflow: 'auto',
+      }}>
+        {/* Image */}
+        <div className="img-ph" style={{ height: 140, borderBottom: '2px solid #bbb', borderRadius: 0, fontSize: 10 }}>
+          {project.imgLabel}
+        </div>
+        <div style={{ padding: '14px 16px' }}>
+          {/* Header */}
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 10 }}>
+            <div>
+              <div className="wf" style={{ fontSize: 20, fontWeight: 700, lineHeight: 1.15 }}>{project.title}</div>
+              <div className="mono" style={{ fontSize: 8, color: '#888', marginTop: 3 }}>{project.company} · {project.year}</div>
+            </div>
+            <button onClick={onClose} style={{ border: '2px solid #333', background: '#fff', cursor: 'pointer', width: 24, height: 24, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 14, fontFamily: 'monospace', flexShrink: 0 }}>×</button>
+          </div>
+          <div style={{ display: 'flex', gap: 4, flexWrap: 'wrap', marginBottom: 12 }}>
+            {project.tags.map(t => <span key={t} className="tag" style={{ fontSize: 7 }}>{t}</span>)}
+            {project.award && <span className="tag tag-award" style={{ fontSize: 7 }}>{project.award}</span>}
+          </div>
+          {/* Sections */}
+          {[['Problem', project.problem], ['Solution', project.solution]].map(([h, b]) => (
+            <div key={h} style={{ marginBottom: 10 }}>
+              <div className="mono" style={{ fontSize: 8, letterSpacing: 1, textTransform: 'uppercase', color: '#888', marginBottom: 4 }}>{h}</div>
+              <div className="wf" style={{ fontSize: 13, lineHeight: 1.4, color: '#333' }}>{b}</div>
+            </div>
+          ))}
+          <div style={{ borderTop: '1.5px solid #eee', paddingTop: 10, marginTop: 4 }}>
+            <div className="mono" style={{ fontSize: 8, letterSpacing: 1, textTransform: 'uppercase', color: '#888', marginBottom: 6 }}>Outcomes</div>
+            {project.outcomes.map((o, i) => (
+              <div key={i} style={{ display: 'flex', gap: 6, marginBottom: 4 }}>
+                <span className="wf" style={{ fontSize: 13, color: '#c8a05a', fontWeight: 700, flexShrink: 0 }}>→</span>
+                <span className="wf" style={{ fontSize: 13 }}>{o}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// ─── Layout A: Minimalist ────────────────────────────────────────────────
+// Max whitespace. Identity in 3 lines. Metrics as a horizontal strip.
+// Work: clean 2-col image-top grid.
+
+const LayoutMinimalist = () => {
+  const [active, setActive] = React.useState(null);
+  return (
+    <div style={{ width: W, background: '#fff', position: 'relative', fontFamily: 'Caveat, cursive' }}>
+      {/* Nav: just name + single CTA */}
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '14px 24px', borderBottom: '1px solid #ddd' }}>
+        <span className="mono" style={{ fontSize: 12, fontWeight: 700 }}>JM</span>
+        <LinkedInBtn style={{ padding: '5px 12px', fontSize: 9 }} />
+      </div>
+
+      {/* Hero: sparse, generous whitespace */}
+      <div style={{ padding: '44px 24px 36px', borderBottom: '1.5px solid #eee' }}>
+        <div className="wf" style={{ fontSize: 42, fontWeight: 700, lineHeight: 1, letterSpacing: -0.5, marginBottom: 8 }}>Juliana Meyer</div>
+        <div className="wf" style={{ fontSize: 18, color: '#555', marginBottom: 6 }}>Senior Product Marketing Manager</div>
+        <div className="wf" style={{ fontSize: 14, color: '#888', maxWidth: 340 }}>GTM strategy for 40+ products. Tech PMM fluent in GitHub, positioning, and data.</div>
+        <div style={{ marginTop: 22, display: 'flex', gap: 10 }}>
+          <LinkedInBtn />
+          <span className="tag" style={{ fontSize: 10, padding: '6px 14px' }}>Resume ↓</span>
+        </div>
+      </div>
+
+      {/* Metrics strip: minimal, data-only */}
+      <div style={{ display: 'flex', borderBottom: '1px solid #eee' }}>
+        {[['40+','products launched'],['5M+','reach in 30 days'],['163%','of Q4 lead target'],['61%','WAU baseline lift']].map(([n, l], i) => (
+          <div key={n} style={{ flex: 1, padding: '16px 0', textAlign: 'center', borderRight: i < 3 ? '1px solid #eee' : 'none' }}>
+            <div className="wf" style={{ fontSize: 22, fontWeight: 700 }}>{n}</div>
+            <div className="wf" style={{ fontSize: 10, color: '#999', marginTop: 2 }}>{l}</div>
+          </div>
+        ))}
+      </div>
+
+      {/* Work grid */}
+      <div style={{ padding: '28px 24px 0' }}>
+        <SectionLabel>Work</SectionLabel>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginTop: 16 }}>
+          {PROJECTS.map(p => (
+            <ProjectCard key={p.id} project={p} onOpen={setActive} variant="image-top" />
+          ))}
+        </div>
+      </div>
+
+      {/* Skills */}
+      <div style={{ padding: '24px 24px 0' }}>
+        <SectionLabel>Skills</SectionLabel>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginTop: 10 }}>
+          {['GTM Strategy','Positioning','Lifecycle Emails','Sales Enablement','Developer Docs','Data Analysis','Video Scripting','GitHub','HubSpot','Intercom','Pendo','Figma'].map(s => (
+            <span key={s} className="tag" style={{ fontSize: 8 }}>{s}</span>
+          ))}
+        </div>
+      </div>
+
+      {/* Contact footer */}
+      <div style={{ padding: '28px 24px 28px', textAlign: 'center' }}>
+        <div className="wf" style={{ fontSize: 15, color: '#999', marginBottom: 12 }}>Open to senior PMM roles in tech.</div>
+        <LinkedInBtn style={{ margin: '0 auto' }} />
+      </div>
+
+      <Modal project={active} onClose={() => setActive(null)} />
+    </div>
+  );
+};
+
+// ─── Layout B: Creative ─────────────────────────────────────────────────
+// Hero uses a full-bleed image backdrop + bold type overlay.
+// Work: image-dominant mosaic grid (first card spans full width).
+// Asymmetric typography rhythm.
+
+const LayoutCreative = () => {
+  const [active, setActive] = React.useState(null);
+  return (
+    <div style={{ width: W, background: '#1a1a1a', color: '#f0ece4', position: 'relative' }}>
+      {/* Nav */}
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '14px 22px', position: 'absolute', top: 0, left: 0, right: 0, zIndex: 10 }}>
+        <span className="mono" style={{ fontSize: 12, fontWeight: 700, color: '#fff' }}>JM</span>
+        <LinkedInBtn dark style={{ padding: '5px 12px', fontSize: 9 }} />
+      </div>
+
+      {/* Hero: hatched bg image fill, text overlaid */}
+      <div style={{ position: 'relative', height: 280, borderBottom: '2px solid #333' }}>
+        <div className="img-ph img-ph-dark" style={{ position: 'absolute', inset: 0, border: 'none', borderRadius: 0, fontSize: 10 }}>
+          hero image / texture / campaign visual
+        </div>
+        {/* Gradient overlay */}
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, transparent 20%, rgba(26,26,26,0.85) 100%)' }} />
+        <div style={{ position: 'absolute', bottom: 22, left: 22, right: 22 }}>
+          <div className="mono" style={{ fontSize: 8, letterSpacing: 2, color: '#aaa', marginBottom: 8, textTransform: 'uppercase' }}>Senior PMM · iConnections · VTEX</div>
+          <div className="wf" style={{ fontSize: 42, fontWeight: 700, lineHeight: 1.0, color: '#fff', letterSpacing: -0.5 }}>
+            Juliana Meyer
+          </div>
+          <div className="wf" style={{ fontSize: 16, color: '#ccc', marginTop: 4 }}>
+            I build GTM from zero to shipped — 40+ products.
+          </div>
+        </div>
+      </div>
+
+      {/* Sub-hero: metrics + cta, dark bg */}
+      <div style={{ background: '#111', padding: '18px 22px', borderBottom: '2px solid #333', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        <div style={{ display: 'flex', gap: 20 }}>
+          {[['5M+','reach, 30d'],['163%','lead target'],['61%','WAU lift']].map(([n, l]) => (
+            <div key={n}>
+              <div className="wf" style={{ fontSize: 20, fontWeight: 700, color: '#fff' }}>{n}</div>
+              <div className="wf" style={{ fontSize: 9, color: '#888' }}>{l}</div>
+            </div>
+          ))}
+        </div>
+        <LinkedInBtn dark style={{ flexShrink: 0 }} />
+      </div>
+
+      {/* Work: mosaic — first card full width, rest 2-col */}
+      <div style={{ padding: '24px 22px 0', background: '#f5f3ef' }}>
+        <SectionLabel>Work</SectionLabel>
+
+        {/* Big featured card */}
+        <div onClick={() => setActive(PROJECTS[0])} style={{
+          border: '2px solid #333', background: '#fff', marginTop: 14,
+          cursor: 'pointer', display: 'flex', height: 120,
+        }}
+          onMouseEnter={e => e.currentTarget.style.background = '#f9f8f5'}
+          onMouseLeave={e => e.currentTarget.style.background = '#fff'}
+        >
+          <div className="img-ph" style={{ width: 170, borderRight: '2px solid #bbb', borderRadius: 0, flexShrink: 0, fontSize: 9 }}>
+            {PROJECTS[0].imgLabel}
+          </div>
+          <div style={{ padding: '14px 16px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+            <div style={{ display: 'flex', gap: 5, marginBottom: 6 }}>
+              <span className="tag tag-filled" style={{ fontSize: 7 }}>iConnections</span>
+              <span className="tag" style={{ fontSize: 7 }}>Mobile</span>
+            </div>
+            <div className="wf" style={{ fontSize: 18, fontWeight: 700, lineHeight: 1.2 }}>{PROJECTS[0].title}</div>
+            <div className="wf" style={{ fontSize: 11, color: '#666', marginTop: 4, lineHeight: 1.3 }}>Full GTM for a personalized LP homepage. 5 videos, 200+ content cards.</div>
+            <div style={{ marginTop: 8, display: 'flex', gap: 14 }}>
+              <div><span className="wf" style={{ fontSize: 16, fontWeight: 700 }}>24%</span> <span className="wf" style={{ fontSize: 9, color: '#888' }}>LP base</span></div>
+              <div><span className="wf" style={{ fontSize: 16, fontWeight: 700 }}>43K</span> <span className="wf" style={{ fontSize: 9, color: '#888' }}>sessions</span></div>
+            </div>
+          </div>
+        </div>
+
+        {/* 2-col grid for rest */}
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, marginTop: 12 }}>
+          {PROJECTS.slice(1).map(p => (
+            <ProjectCard key={p.id} project={p} onOpen={setActive} variant="default" />
+          ))}
+        </div>
+      </div>
+
+      {/* Skills dark band */}
+      <div style={{ background: '#1a1a1a', padding: '22px 22px', marginTop: 0 }}>
+        <SectionLabel color="#888">Skills</SectionLabel>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginTop: 10 }}>
+          {['GTM Strategy','Positioning','Developer PMM','Lifecycle Comms','Sales Enablement','Data Analysis','Video Scripting','GitHub','HubSpot','Pendo'].map(s => (
+            <span key={s} className="tag" style={{ fontSize: 8, background: 'transparent', borderColor: '#555', color: '#ccc' }}>{s}</span>
+          ))}
+        </div>
+        <div style={{ marginTop: 22, paddingTop: 18, borderTop: '1px solid #333', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <div className="wf" style={{ fontSize: 14, color: '#999' }}>Open to senior PMM roles in tech.</div>
+          <LinkedInBtn dark />
+        </div>
+      </div>
+
+      <Modal project={active} onClose={() => setActive(null)} />
+    </div>
+  );
+};
+
+// ─── Layout C: Impact-Led Scrapbook ──────────────────────────────────────
+// My choice: Horizontal scrolling work rail + editorial type rhythm.
+// Hero is a dense "quick profile" card — role, 4 signal stats, bio, CTA — 
+// occupying top-left, with a row of company logos to the right.
+// Work is a horizontal scroll rail of tall image-first cards.
+
+const LayoutScrapbook = () => {
+  const [active, setActive] = React.useState(null);
+
+  return (
+    <div style={{ width: W, background: '#fff', position: 'relative' }}>
+      {/* Nav */}
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', borderBottom: '2px solid #333' }}>
+        <span className="mono" style={{ fontSize: 12, fontWeight: 700 }}>Juliana Meyer</span>
+        <div style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
+          {['Work','Skills','About'].map(l => <span key={l} className="wf" style={{ fontSize: 12, color: '#777' }}>{l}</span>)}
+          <LinkedInBtn style={{ padding: '4px 10px', fontSize: 9 }} />
+        </div>
+      </div>
+
+      {/* Hero: two columns — profile left, company/awards right */}
+      <div style={{ display: 'flex', borderBottom: '2px solid #333', minHeight: 180 }}>
+        {/* Left: identity + headline stats */}
+        <div style={{ flex: 1, padding: '22px 20px', borderRight: '2px solid #ddd' }}>
+          <div className="wf" style={{ fontSize: 30, fontWeight: 700, lineHeight: 1.05 }}>Senior PMM.<br/>
+            <span style={{ color: '#888', fontWeight: 400, fontSize: 20 }}>Builder. Launcher. Measurer.</span>
+          </div>
+          <div className="wf" style={{ fontSize: 12, color: '#888', marginTop: 8, lineHeight: 1.4, maxWidth: 220 }}>
+            GTM for 40+ products across B2B SaaS and alternative investments.
+          </div>
+          <div style={{ marginTop: 14 }}>
+            <LinkedInBtn />
+          </div>
+        </div>
+        {/* Right: signal stats as bold numbers */}
+        <div style={{ width: 160, padding: '22px 16px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', gap: 8 }}>
+          {[['40+','products launched'],['5M+','reach in 30 days'],['61%','WAU baseline lift'],['163%','of Q4 lead target']].map(([n, l]) => (
+            <div key={n} style={{ display: 'flex', gap: 8, alignItems: 'baseline', borderBottom: '1px solid #f0ece4', paddingBottom: 6 }}>
+              <div className="wf" style={{ fontSize: 20, fontWeight: 700, lineHeight: 1 }}>{n}</div>
+              <div className="wf" style={{ fontSize: 10, color: '#999', lineHeight: 1.2 }}>{l}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Company + Award badges */}
+      <div style={{ padding: '12px 20px', borderBottom: '2px solid #eee', display: 'flex', alignItems: 'center', gap: 10, background: '#faf9f7' }}>
+        <span className="mono" style={{ fontSize: 7, color: '#aaa', letterSpacing: 1, textTransform: 'uppercase', flexShrink: 0 }}>Experience at</span>
+        {['iConnections','VTEX (NYSE)'].map(c => (
+          <span key={c} className="tag tag-filled" style={{ fontSize: 8 }}>{c}</span>
+        ))}
+        <span style={{ flex: 1 }} />
+        <span className="tag tag-award" style={{ fontSize: 8 }}>🏅 Awwwards HM</span>
+        <span className="tag tag-award" style={{ fontSize: 8 }}>🏆 DevPortal Award</span>
+      </div>
+
+      {/* Work: horizontal scroll rail */}
+      <div style={{ padding: '22px 0 0' }}>
+        <div style={{ padding: '0 20px', marginBottom: 14 }}>
+          <SectionLabel>Work — click any card to open</SectionLabel>
+        </div>
+        <div style={{ overflowX: 'auto', paddingBottom: 4 }}>
+          <div style={{ display: 'flex', gap: 12, padding: '0 20px 20px', width: 'max-content' }}>
+            {PROJECTS.map(p => (
+              <div key={p.id} onClick={() => setActive(p)} style={{
+                width: 180, border: '2px solid #333', background: '#fff', cursor: 'pointer', flexShrink: 0,
+              }}
+                onMouseEnter={e => e.currentTarget.style.transform = 'translateY(-3px)'}
+                onMouseLeave={e => e.currentTarget.style.transform = ''}
+              >
+                <div className="img-ph" style={{ height: 110, borderBottom: '2px solid #bbb', borderRadius: 0, fontSize: 8 }}>
+                  {p.imgLabel}
+                </div>
+                <div style={{ padding: '9px 10px' }}>
+                  <div className="wf" style={{ fontSize: 13, fontWeight: 700, lineHeight: 1.2 }}>{p.title}</div>
+                  <div className="mono" style={{ fontSize: 7, color: '#888', marginTop: 3 }}>{p.company} · {p.year}</div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginTop: 8 }}>
+                    <div>
+                      <div className="wf" style={{ fontSize: 17, fontWeight: 700 }}>{p.metric}</div>
+                      <div className="wf" style={{ fontSize: 8, color: '#888', lineHeight: 1.2 }}>{p.metricLabel}</div>
+                    </div>
+                    {p.award && <span className="tag tag-award" style={{ fontSize: 6 }}>{p.award}</span>}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="wf" style={{ textAlign: 'center', color: '#bbb', fontSize: 11, marginBottom: 8 }}>← scroll →</div>
+      </div>
+
+      {/* Skills: simple row, no fuss */}
+      <div style={{ padding: '0 20px 20px', borderTop: '1px solid #eee' }}>
+        <div style={{ paddingTop: 16, marginBottom: 10 }}>
+          <SectionLabel>Skills</SectionLabel>
+        </div>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
+          {['GTM Strategy','Positioning','Lifecycle Comms','Sales Enablement','Developer PMM','Data Analysis','Video Scripting','GitHub','HubSpot','Intercom','Pendo','Figma'].map(s => (
+            <span key={s} className="tag" style={{ fontSize: 8 }}>{s}</span>
+          ))}
+        </div>
+      </div>
+
+      {/* Footer CTA */}
+      <div style={{ padding: '18px 20px', borderTop: '2px solid #333', display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: '#faf9f7' }}>
+        <div className="wf" style={{ fontSize: 14, color: '#777' }}>Open to senior PMM roles in tech.</div>
+        <LinkedInBtn />
+      </div>
+
+      <Modal project={active} onClose={() => setActive(null)} />
+    </div>
+  );
+};
+
+// ─── App ─────────────────────────────────────────────────────
+
+function App() {
+  return (
+    <DesignCanvas>
+      <DCSection id="layouts" title="Portfolio v2 Wireframes" subtitle="Click any project card to expand · Scroll & zoom canvas to explore">
+        <DCArtboard id="minimalist" label="A · Minimalist" width={W} height={1120}>
+          <LayoutMinimalist />
+        </DCArtboard>
+        <DCArtboard id="creative" label="B · Creative" width={W} height={1200}>
+          <LayoutCreative />
+        </DCArtboard>
+        <DCArtboard id="scrapbook" label="C · Impact-Led" width={W} height={920}>
+          <LayoutScrapbook />
+        </DCArtboard>
+      </DCSection>
+    </DesignCanvas>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>
