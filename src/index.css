@@ -1,0 +1,42 @@
+:root {
+  --brown-900: #2A1810;
+  --brown-800: #3D2817;
+  --brown-700: #5C3A21;
+  --brown-600: #7A553A;
+  --brown-500: #9C7B5F;
+  --brown-300: #D4C2B0;
+  --brown-200: #E8DDD0;
+  --brown-100: #F0E8DD;
+  --bg: #FFFFFF;
+  --bg-warm: #FBF7F2;
+  --accent: #E8B4A0;
+  --accent-soft: #FBEEE7;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  font-family: 'DM Sans', sans-serif;
+  color: var(--brown-900);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
