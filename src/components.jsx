@@ -399,6 +399,49 @@ export const VerticalTimeline = ({ timeline, animate = true }) => {
 export const ProjectCard = ({ project, onOpen, layout = 'grid', titleScale = 1 }) => {
   const [hover, setHover] = useState(false)
 
+  if (layout === 'mobile') {
+    return (
+      <div
+        onClick={() => onOpen(project)}
+        style={{
+          minHeight: '100svh',
+          display: 'flex', flexDirection: 'column',
+          borderBottom: '1px solid var(--brown-200)',
+          cursor: 'pointer'
+        }}
+      >
+        <div style={{ flex: '0 0 52vh', overflow: 'hidden' }}>
+          <ImgPlaceholder height="100%" label={project.imgLabel} src={project.image}
+            style={{ height: '52vh', borderRadius: 0 }} />
+        </div>
+        <div style={{ padding: '28px 24px 40px', display: 'flex', flexDirection: 'column', gap: 12, flex: 1 }}>
+          <Eyebrow>{project.company} · {project.year}</Eyebrow>
+          <div style={{
+            fontFamily: 'Cormorant Garamond, serif',
+            fontSize: 36 * titleScale, fontWeight: 300, lineHeight: 1.05,
+            letterSpacing: -0.5, color: 'var(--brown-900)'
+          }}>{project.title}</div>
+          <div style={{
+            fontFamily: 'DM Sans, sans-serif', fontSize: 14,
+            color: 'var(--brown-600)', lineHeight: 1.55, flex: 1
+          }}>{project.problem}</div>
+          <div style={{ marginTop: 8 }}>
+            <div style={{
+              fontFamily: 'Cormorant Garamond, serif',
+              fontSize: 56, fontWeight: 300, lineHeight: 0.9,
+              color: 'var(--brown-900)', letterSpacing: -1.5
+            }}>{project.metric}</div>
+            <div style={{
+              fontFamily: 'DM Sans, sans-serif', fontSize: 11,
+              letterSpacing: 1.5, textTransform: 'uppercase',
+              color: 'var(--brown-500)', marginTop: 6
+            }}>{project.metricLabel}</div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
   if (layout === 'list') {
     return (
       <div

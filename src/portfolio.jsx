@@ -205,10 +205,11 @@ const AboutCareerSkills = ({ profile, timeline, skills, mobile, titleScale = 1 }
 
 // ─── Work section ─────────────────────────────────────────────
 const WorkSection = ({ projects, onOpen, layout, titleScale = 1, mobile, linkedin }) => (
-  <section id="work" style={{ padding: mobile ? '60px 24px' : '120px 80px' }}>
+  <section id="work" style={{ padding: mobile ? '60px 0 0' : '120px 80px' }}>
     <div style={{
       display: 'flex', justifyContent: 'space-between', alignItems: 'baseline',
-      marginBottom: mobile ? 40 : 80
+      marginBottom: mobile ? 40 : 80,
+      padding: mobile ? '0 24px' : undefined
     }}>
       <div>
         <Eyebrow>Selected work</Eyebrow>
@@ -224,7 +225,13 @@ const WorkSection = ({ projects, onOpen, layout, titleScale = 1, mobile, linkedi
       {!mobile && <Eyebrow>Projects</Eyebrow>}
     </div>
 
-    {layout === 'list' || mobile ? (
+    {mobile ? (
+      <div>
+        {projects.map((p) => (
+          <ProjectCard key={p.id} project={p} onOpen={onOpen} layout="mobile" titleScale={titleScale} />
+        ))}
+      </div>
+    ) : layout === 'list' ? (
       <div>
         {projects.map((p) => (
           <ProjectCard key={p.id} project={p} onOpen={onOpen} layout="list" titleScale={titleScale} />
@@ -239,7 +246,7 @@ const WorkSection = ({ projects, onOpen, layout, titleScale = 1, mobile, linkedi
       </div>
     )}
 
-    <div style={{ marginTop: mobile ? 48 : 80, textAlign: 'center' }}>
+    <div style={{ marginTop: mobile ? 48 : 80, textAlign: 'center', padding: mobile ? '0 24px 60px' : undefined }}>
       <LinkedInBtn size={mobile ? 'md' : 'lg'} href={linkedin} label="Connect on LinkedIn" />
     </div>
   </section>
