@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import posthog from 'posthog-js'
 
 // ─── Photo slideshow ─────────────────────────────────────────
 export const PhotoSlideshow = ({ size = 240, images = [], labels = [], rounded = '50%', interval = 3200 }) => {
@@ -58,6 +59,7 @@ export const LinkedInBtn = ({ size = 'md', variant = 'solid', label = 'Connect o
       href={href}
       target="_blank"
       rel="noopener noreferrer"
+      onClick={() => posthog.capture('linkedin clicked', { label, href })}
       style={{
         display: 'inline-flex', alignItems: 'center', gap: 10,
         background: isOutline ? 'transparent' : 'var(--brown-900)',
@@ -99,6 +101,7 @@ export const GitHubBtn = ({ size = 'md', variant = 'outline', label = 'GitHub', 
       href={href}
       target="_blank"
       rel="noopener noreferrer"
+      onClick={() => posthog.capture('github clicked', { label, href })}
       style={{
         display: 'inline-flex', alignItems: 'center', gap: 10,
         background: isOutline ? 'transparent' : 'var(--brown-900)',
@@ -402,7 +405,7 @@ export const ProjectCard = ({ project, onOpen, layout = 'grid', titleScale = 1 }
   if (layout === 'mobile') {
     return (
       <div
-        onClick={() => onOpen(project)}
+        onClick={() => { posthog.capture('project opened', { project_id: project.id, project_title: project.title, project_company: project.company, layout: 'mobile' }); onOpen(project) }}
         style={{
           minHeight: '100svh',
           display: 'flex', flexDirection: 'column',
@@ -445,7 +448,7 @@ export const ProjectCard = ({ project, onOpen, layout = 'grid', titleScale = 1 }
   if (layout === 'list') {
     return (
       <div
-        onClick={() => onOpen(project)}
+        onClick={() => { posthog.capture('project opened', { project_id: project.id, project_title: project.title, project_company: project.company, layout: 'list' }); onOpen(project) }}
         onMouseEnter={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
         style={{
@@ -492,7 +495,7 @@ export const ProjectCard = ({ project, onOpen, layout = 'grid', titleScale = 1 }
   // Grid layout
   return (
     <div
-      onClick={() => onOpen(project)}
+      onClick={() => { posthog.capture('project opened', { project_id: project.id, project_title: project.title, project_company: project.company, layout: 'grid' }); onOpen(project) }}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
       style={{
@@ -551,9 +554,15 @@ export const ProjectModal = ({ project, onClose }) => {
   }, [project, onClose])
 
   if (!project) return null
+
+  function handleClose() {
+    posthog.capture('project closed', { project_id: project.id, project_title: project.title })
+    onClose()
+  }
+
   return (
     <div
-      onClick={onClose}
+      onClick={handleClose}
       style={{
         position: 'fixed', inset: 0, background: 'rgba(45, 30, 22, 0.55)',
         backdropFilter: 'blur(8px)',
@@ -570,7 +579,7 @@ export const ProjectModal = ({ project, onClose }) => {
         }}
       >
         <button
-          onClick={onClose}
+          onClick={handleClose}
           style={{
             position: 'absolute', top: 24, right: 24, zIndex: 10,
             width: 44, height: 44, borderRadius: '50%',
@@ -606,6 +615,7 @@ export const ProjectModal = ({ project, onClose }) => {
                       href={link.url}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={() => posthog.capture('project link clicked', { project_id: project.id, project_title: project.title, link_label: link.label, link_url: link.url })}
                       style={{
                         display: 'inline-block', padding: '4px 12px',
                         background: 'transparent', color: 'var(--brown-800)',
