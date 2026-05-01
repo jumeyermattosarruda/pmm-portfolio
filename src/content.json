@@ -168,6 +168,7 @@
       "metric": "61%",
       "metricLabel": "Weekly Active User Lift",
       "imgLabel": "email & push designs",
+      "image": "/images/work/Platform Weekly Active User Growth.png",
       "problem": "Platform retention was event-driven, not platform-driven. Events were the main driver of all platform activity.",
       "solution": "Developed ongoing product comms including onboarding emails and push notifications. Created in-app messaging (posts, product tours, banners, surveys) to improve customer education and feature discoverability. Built a 2-month platform-only sales enablement program for client-facing teams — trainings, mock demos, pitch decks, and sell sheets.",
       "outcomes": [
