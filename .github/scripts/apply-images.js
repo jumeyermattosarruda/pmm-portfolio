@@ -2,17 +2,41 @@
 // Scans public/images/{profile,work} and updates src/content.json with real image paths.
 // Run by the "Apply Uploaded Images" GitHub Action whenever images are pushed.
 
-const fs = require('fs')
-const path = require('path')
+import fs from 'fs'
+import path from 'path'
 
 const EXTENSIONS = new Set(['.jpg', '.jpeg', '.png', '.webp', '.avif', '.gif'])
 const CONTENT_PATH = 'src/content.json'
+
+// Maps normalized image filenames (lowercase, no extension) to project IDs.
+// Add a new entry here whenever an image filename doesn't match the project ID directly.
+const FILENAME_ALIASES = {
+  'mobile feed': 'mobile-feed',
+  'allocator pro': 'allocator-pro',
+  'vtex dev portal': 'devportal',
+  'frameroom': 'frameroom',
+  'events': 'events',
+  'the manuscript': 'manuscript-podcast',
+  'vtex vision gif product teaser': 'vtex-vision',
+  'tech writing br': 'tech-writing-br',
+  're-engagement experiment': 'reengagement',
+  'vtex faststore': 'faststore',
+}
 
 function listImages(dir) {
   if (!fs.existsSync(dir)) return []
   return fs.readdirSync(dir)
     .filter(f => EXTENSIONS.has(path.extname(f).toLowerCase()) && !f.startsWith('.'))
     .sort()
+}
+
+// Resolves a work image filename to its project ID.
+// 1. Try the alias map (lowercase filename stem)
+// 2. Fall back to the raw filename stem (handles future files already named by ID)
+function resolveProjectId(filename) {
+  const stem = path.basename(filename, path.extname(filename))
+  const normalized = stem.toLowerCase()
+  return FILENAME_ALIASES[normalized] ?? stem
 }
 
 const content = JSON.parse(fs.readFileSync(CONTENT_PATH, 'utf8'))
@@ -32,10 +56,9 @@ if (profileImages.length > 0) {
 // ── Work / project cards ──────────────────────────────────────
 const workImages = listImages('public/images/work')
 if (workImages.length > 0) {
-  // Build a lookup: project-id → image path
   const byId = {}
   workImages.forEach(f => {
-    const id = path.basename(f, path.extname(f))
+    const id = resolveProjectId(f)
     byId[id] = `/images/work/${f}`
   })
 
@@ -49,7 +72,7 @@ if (workImages.length > 0) {
   })
 
   const unmatched = workImages.filter(f => {
-    const id = path.basename(f, path.extname(f))
+    const id = resolveProjectId(f)
     return !content.projects.some(p => p.id === id)
   })
   if (unmatched.length) {
