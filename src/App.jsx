@@ -1,6 +1,28 @@
 import { useState, useEffect } from 'react'
-import content from './content.json'
+import rawContent from './content.json'
 import { Portfolio } from './portfolio'
+
+// Vite sets BASE_URL to '/pmm-portfolio/' on GitHub Pages and '/' locally.
+// Images are stored as absolute paths (/images/...) but must be served
+// relative to the base, so we prefix every path at runtime.
+const base = import.meta.env.BASE_URL
+
+function withBase(p) {
+  if (!p || p.startsWith('http')) return p
+  return base.replace(/\/$/, '') + '/' + p.replace(/^\//, '')
+}
+
+const content = {
+  ...rawContent,
+  profile: {
+    ...rawContent.profile,
+    photos: rawContent.profile.photos.map(withBase)
+  },
+  projects: rawContent.projects.map(p => ({
+    ...p,
+    image: withBase(p.image)
+  }))
+}
 
 export default function App() {
   const [mobile, setMobile] = useState(window.innerWidth < 768)
