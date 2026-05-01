@@ -11,16 +11,26 @@ const CONTENT_PATH = 'src/content.json'
 // Maps normalized image filenames (lowercase, no extension) to project IDs.
 // Add a new entry here whenever an image filename doesn't match the project ID directly.
 const FILENAME_ALIASES = {
+  // current filenames (lowercase stem) → project id
+  'mobile feed gtm': 'mobile-feed',
+  'allocator pro loyalty': 'allocator-pro',
+  'vtex developer portal': 'devportal',
+  'frameroom': 'frameroom',
+  'events & conferences': 'events',
+  'the manu<script> podcast': 'manuscript-podcast',
+  'vtex vision — 17-product launch': 'vtex-vision',
+  'tech writing br community': 'tech-writing-br',
+  're-engagement experiment': 'reengagement',
+  'vtex faststore gtm': 'faststore',
+  // legacy names kept so old uploads still resolve if not yet renamed
   'mobile feed': 'mobile-feed',
   'allocator pro': 'allocator-pro',
   'vtex dev portal': 'devportal',
-  'frameroom': 'frameroom',
-  'events': 'events',
   'the manuscript': 'manuscript-podcast',
   'vtex vision gif product teaser': 'vtex-vision',
   'tech writing br': 'tech-writing-br',
-  're-engagement experiment': 'reengagement',
   'vtex faststore': 'faststore',
+  'events': 'events',
 }
 
 function listImages(dir) {

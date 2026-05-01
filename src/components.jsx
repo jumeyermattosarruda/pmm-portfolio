@@ -17,7 +17,7 @@ export const PhotoSlideshow = ({ size = 240, images = [], labels = [], rounded =
             position: 'absolute', inset: 0, borderRadius: rounded,
             opacity: n === i ? 1 : 0, transition: 'opacity 0.9s ease-in-out',
             background: isImage
-              ? `url(${s}) center/cover`
+              ? `url('${s}') center/cover`
               : 'linear-gradient(135deg, var(--accent-soft) 0%, #f3e6df 60%, #e8d5cb 100%)',
             display: 'flex', alignItems: 'flex-end', justifyContent: 'center',
             color: 'var(--brown-700)', fontFamily: 'DM Sans, sans-serif', fontSize: 11,
@@ -183,7 +183,7 @@ export const Eyebrow = ({ children, color, style = {} }) => (
 // ─── Image placeholder ────────────────────────────────────────
 export const ImgPlaceholder = ({ height = 220, label = 'project image', src = null, style = {} }) => {
   if (src) {
-    return <div style={{ height, borderRadius: 5, background: `url(${src}) center/cover`, ...style }} />
+    return <div style={{ height, borderRadius: 5, background: `url('${src}') center/cover`, ...style }} />
   }
   return (
     <div style={{
