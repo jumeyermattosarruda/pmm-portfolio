@@ -189,7 +189,7 @@
       "metric": "25.9%",
       "metricLabel": "churned users reactivated",
       "imgLabel": "email campaigns",
-      "image": "/images/work/Re-engagement Experiment.png",
+      "image": "/images/work/Reengagement Experiment.png",
       "problem": "A significant cohort of GPs and LPs had not logged into the platform for 90+ days, considered essentially churned. No prior reengagement strategy existed for this group.",
       "solution": "Designed and executed a 4-month structured experiment: 5 campaign hypotheses tested, segmentation framework developed to identify cohorts most likely to respond, cross-referenced open rates, click rates, and platform activity to surface what drove re-engagement for LP and GP users.",
       "outcomes": [
