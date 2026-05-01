@@ -13,19 +13,58 @@
       "Senior Product Marketing Manager with 7+ years of experience in tech. Proven track record in product-led GTM strategy, developer marketing and documentation, and building go-to-market motions across growth-stage and enterprise SaaS.",
       "Background in technical writing means I'm fluent in GitHub, OpenAPI, and developer audiences. Co-founder of Tech Writing BR (Brazil's first and only technical writing community, 300+ members), co-host of The Manu<script> podcast (30+ episodes, guests in 7+ countries)."
     ],
-    "photos": ["/images/profile/profile-2.jpg", "/images/profile/profile-3.jpg", "/images/profile/profile-4.jpg", "/images/profile/profile-5.jpg", "/images/profile/profile-6.jpg"]
+    "photos": [
+      "/images/profile/profile-2.jpg",
+      "/images/profile/profile-3.jpg",
+      "/images/profile/profile-4.jpg",
+      "/images/profile/profile-5.jpg",
+      "/images/profile/profile-6.jpg"
+    ]
   },
   "metrics": [
-    { "value": "40+", "label": "products launched" },
-    { "value": "5M+", "label": "reach in 30 days" },
-    { "value": "163%", "label": "of quarter lead gen target" },
-    { "value": "61%", "label": "weekly active user lift" }
+    {
+      "value": "40+",
+      "label": "products launched"
+    },
+    {
+      "value": "5M+",
+      "label": "reach in 30 days"
+    },
+    {
+      "value": "163%",
+      "label": "of quarter lead gen target"
+    },
+    {
+      "value": "61%",
+      "label": "weekly active user lift"
+    }
   ],
   "timeline": [
-    { "company": "IConnections", "role": "Senior PMM", "start": 2024, "end": "now", "current": true },
-    { "company": "VTEX", "role": "Global Product Marketing Manager", "start": 2022, "end": 2024 },
-    { "company": "VTEX", "role": "Tech Writing Manager", "start": 2021, "end": 2022 },
-    { "company": "VTEX", "role": "Sr. Tech Writer", "start": 2019, "end": 2021 }
+    {
+      "company": "IConnections",
+      "role": "Senior PMM",
+      "start": 2024,
+      "end": "now",
+      "current": true
+    },
+    {
+      "company": "VTEX",
+      "role": "Global Product Marketing Manager",
+      "start": 2022,
+      "end": 2024
+    },
+    {
+      "company": "VTEX",
+      "role": "Tech Writing Manager",
+      "start": 2021,
+      "end": 2022
+    },
+    {
+      "company": "VTEX",
+      "role": "Sr. Tech Writer",
+      "start": 2019,
+      "end": 2021
+    }
   ],
   "projects": [
     {
@@ -33,7 +72,10 @@
       "title": "VTEX Vision — 17-Product Launch",
       "company": "VTEX",
       "year": "2023–24",
-      "tags": ["Global", "Campaign"],
+      "tags": [
+        "Global",
+        "Campaign"
+      ],
       "award": "Awwwards HM",
       "metric": "5M+",
       "metricLabel": "reach in 30 days",
@@ -53,7 +95,10 @@
       "title": "VTEX Developer Portal",
       "company": "VTEX",
       "year": "2019–23",
-      "tags": ["Docs", "Leadership"],
+      "tags": [
+        "Docs",
+        "Leadership"
+      ],
       "award": "DevPortal Award",
       "metric": "35K+",
       "metricLabel": "devs served monthly",
@@ -74,7 +119,10 @@
       "title": "Mobile Feed GTM",
       "company": "iConnections",
       "year": "2025–26",
-      "tags": ["Mobile", "Launch"],
+      "tags": [
+        "Mobile",
+        "Launch"
+      ],
       "metric": "24%",
       "metricLabel": "LP memberbase @ 5mo",
       "imgLabel": "mobile app screenshot",
@@ -93,7 +141,9 @@
       "title": "Allocator Pro Loyalty",
       "company": "iConnections",
       "year": "2026",
-      "tags": ["New Product"],
+      "tags": [
+        "New Product"
+      ],
       "metric": "200",
       "metricLabel": "beta members",
       "imgLabel": "loyalty dashboard",
@@ -111,7 +161,10 @@
       "title": "Platform Weekly Active User Growth",
       "company": "iConnections",
       "year": "2025",
-      "tags": ["Lifecycle", "Enablement"],
+      "tags": [
+        "Lifecycle",
+        "Enablement"
+      ],
       "metric": "61%",
       "metricLabel": "Weekly Active User Lift",
       "imgLabel": "email & push designs",
@@ -129,7 +182,10 @@
       "title": "Re-engagement Experiment",
       "company": "iConnections",
       "year": "2025",
-      "tags": ["Experiment", "Lifecycle"],
+      "tags": [
+        "Experiment",
+        "Lifecycle"
+      ],
       "metric": "25.9%",
       "metricLabel": "churned users reactivated",
       "imgLabel": "email campaigns",
@@ -149,7 +205,10 @@
       "title": "VTEX FastStore GTM",
       "company": "VTEX",
       "year": "2023–24",
-      "tags": ["Developer GTM", "B2B"],
+      "tags": [
+        "Developer GTM",
+        "B2B"
+      ],
       "metric": "Full-funnel",
       "metricLabel": "digital + event + sales",
       "imgLabel": "campaign visuals",
@@ -167,7 +226,10 @@
       "title": "Tech Writing BR Community",
       "company": "Independent",
       "year": "2021–present",
-      "tags": ["Community", "Co-founder"],
+      "tags": [
+        "Community",
+        "Co-founder"
+      ],
       "metric": "300+",
       "metricLabel": "members",
       "imgLabel": "community logo",
@@ -186,7 +248,10 @@
       "title": "Events & Conferences",
       "company": "iConnections | VTEX | AIESEC",
       "year": "2018–present",
-      "tags": ["Events", "Conferences"],
+      "tags": [
+        "Events",
+        "Conferences"
+      ],
       "metric": "30K",
       "metricLabel": "attendees at flagship events",
       "imgLabel": "event stage",
@@ -203,7 +268,10 @@
       "title": "The Manu<script> Podcast",
       "company": "Independent",
       "year": "2020–24",
-      "tags": ["Podcast", "Content"],
+      "tags": [
+        "Podcast",
+        "Content"
+      ],
       "metric": "30+",
       "metricLabel": "episodes, 7+ countries",
       "imgLabel": "podcast cover art",
@@ -220,7 +288,10 @@
       "title": "FrameRoom — Side Project",
       "company": "Independent",
       "year": "2026",
-      "tags": ["Side Project", "Shipped"],
+      "tags": [
+        "Side Project",
+        "Shipped"
+      ],
       "metric": "Live",
       "metricLabel": "open-source app",
       "imgLabel": "app demo",
@@ -235,10 +306,28 @@
     }
   ],
   "skills": [
-    "GTM Strategy", "Positioning & Messaging", "Lifecycle Comms", "Sales Enablement",
-    "Developer PMM", "Data Analysis", "Video Scripting", "Content Strategy",
-    "API Documentation", "GitHub", "HubSpot", "Intercom", "Pendo", "Salesforce",
-    "Looker", "PowerBI", "Figma", "Notion", "OpenAPI/Swagger", "Sendgrid",
-    "Screenstudio", "ElevenLabs", "Descript"
+    "GTM Strategy",
+    "Positioning & Messaging",
+    "Lifecycle Comms",
+    "Sales Enablement",
+    "Developer PMM",
+    "Data Analysis",
+    "Video Scripting",
+    "Content Strategy",
+    "API Documentation",
+    "GitHub",
+    "HubSpot",
+    "Intercom",
+    "Pendo",
+    "Salesforce",
+    "Looker",
+    "PowerBI",
+    "Figma",
+    "Notion",
+    "OpenAPI/Swagger",
+    "Sendgrid",
+    "Screenstudio",
+    "ElevenLabs",
+    "Descript"
   ]
 }
