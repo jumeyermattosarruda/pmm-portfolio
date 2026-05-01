@@ -226,8 +226,8 @@ export const Tag = ({ children, variant = 'default' }) => {
 
 // ─── Horizontal timeline (desktop) ───────────────────────────
 export const HorizontalTimeline = ({ timeline, animate = true }) => {
-  const minY = 2019
-  const maxY = 2026.5
+  const minY = Math.min(...timeline.map(t => t.start))
+  const maxY = Math.max(2026.5, ...timeline.map(t => t.end === 'now' ? 2026.5 : t.end))
   const span = maxY - minY
   const pos = (y) => (y - minY) / span * 100
   const [progress, setProgress] = useState(animate ? 0 : 1)
@@ -598,6 +598,36 @@ export const ProjectModal = ({ project, onClose }) => {
             <div>
               <Eyebrow>Solution</Eyebrow>
               <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 16, lineHeight: 1.6, color: 'var(--brown-800)', marginTop: 14 }}>{project.solution}</p>
+              {project.links && project.links.length > 0 && (
+                <div style={{ marginTop: 20, display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+                  {project.links.map((link, i) => (
+                    <a
+                      key={i}
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        display: 'inline-block', padding: '4px 12px',
+                        background: 'transparent', color: 'var(--brown-800)',
+                        border: '1px solid var(--brown-400)',
+                        fontFamily: 'DM Sans, sans-serif', fontSize: 11, fontWeight: 500,
+                        letterSpacing: 0.3, borderRadius: 999,
+                        textDecoration: 'none', transition: 'all 0.2s ease'
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.background = 'var(--brown-900)'
+                        e.currentTarget.style.color = '#fff'
+                        e.currentTarget.style.borderColor = 'var(--brown-900)'
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.background = 'transparent'
+                        e.currentTarget.style.color = 'var(--brown-800)'
+                        e.currentTarget.style.borderColor = 'var(--brown-400)'
+                      }}
+                    >↗ {link.label}</a>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
           <div style={{ borderTop: '1px solid var(--brown-200)', paddingTop: 32 }}>

@@ -46,13 +46,6 @@ const Hero = ({ profile, mobile, titleScale = 1 }) => (
     borderBottom: '1px solid var(--brown-200)'
   }}>
     <div style={{
-      display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-      marginBottom: mobile ? 50 : 90
-    }}>
-      <Eyebrow>DEV PORTAL AWARDS | CAMPAIGN AWWWARDS</Eyebrow>
-      <Eyebrow>Portfolio</Eyebrow>
-    </div>
-    <div style={{
       display: mobile ? 'block' : 'grid',
       gridTemplateColumns: mobile ? null : '1fr auto',
       gap: mobile ? 40 : 80, alignItems: 'end'
@@ -140,7 +133,7 @@ const Metrics = ({ metrics, mobile }) => (
 )
 
 // ─── About + Career + Skills (combined section) ───────────────
-const AboutCareerSkills = ({ profile, timeline, skills, mobile, titleScale = 1 }) => (
+const AboutCareerSkills = ({ profile, timeline, skills, tools, mobile, titleScale = 1 }) => (
   <section id="about" style={{
     padding: mobile ? '50px 24px 60px' : '100px 80px',
     borderBottom: '1px solid var(--brown-200)',
@@ -194,10 +187,18 @@ const AboutCareerSkills = ({ profile, timeline, skills, mobile, titleScale = 1 }
     </div>
 
     {/* Skills */}
-    <div>
-      <Eyebrow>Skills & tools</Eyebrow>
+    <div style={{ marginBottom: mobile ? 32 : 48 }}>
+      <Eyebrow>Skills</Eyebrow>
       <div style={{ marginTop: 20, display: 'flex', flexWrap: 'wrap', gap: 8 }}>
         {skills.map((s) => <Tag key={s}>{s}</Tag>)}
+      </div>
+    </div>
+
+    {/* Tools */}
+    <div>
+      <Eyebrow>Tools & Code</Eyebrow>
+      <div style={{ marginTop: 20, display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+        {tools.map((t) => <Tag key={t}>{t}</Tag>)}
       </div>
     </div>
   </section>
@@ -308,6 +309,7 @@ export const Portfolio = ({ content, mobile = false, titleScale = 1, layout = 'g
         profile={content.profile}
         timeline={content.timeline}
         skills={content.skills}
+        tools={content.tools}
         mobile={mobile}
         titleScale={titleScale}
       />

@@ -1,0 +1,204 @@
+# Juliana Meyer — PMM Portfolio
+
+> Senior Product Marketing Manager with 8+ years of experience in tech. Proven track record in product-led GTM strategy, developer marketing and documentation, and building go-to-market motions across growth-stage and enterprise SaaS.
+
+## About
+
+Background in technical writing means she is fluent in GitHub, OpenAPI, and developer audiences. Co-founder of Tech Writing BR (Brazil's first and only technical writing community, 300+ members), co-host of The Manu<script> podcast (30+ episodes, guests in 7+ countries).
+
+- LinkedIn: https://linkedin.com/in/oijulianameyer
+- GitHub: https://github.com/julianameyer
+- Open to: Senior PMM · Lead PMM · Principal PMM · Head of Product Marketing
+
+## Key Metrics
+
+- 40+ products launched
+- 5M+ reach in 30 days
+- 163% of quarter lead gen target
+- 61% weekly active user lift
+
+## Career Timeline
+
+### Partnerships Manager — Ciudad Del Saber | Panama City (2017–2018)
+
+### Sr. Tech Writer — VTEX (2019–2021)
+
+### Tech Writing Manager — VTEX (2021–2022)
+
+### Global Product Marketing Manager — VTEX (2022–2024)
+
+### Senior PMM — IConnections (2024–Present)
+
+## Skills
+
+Go-to-Market Strategy, Product Positioning, Messaging Frameworks, Competitive Analysis, Market Research, Developer GTM, Battlecards, Demo Videos, Landing Pages, Sales Enablement Assets, User Adoption & Engagement, Lifecycle Marketing, Reengagement Campaigns, Full-Funnel Campaigns, A/B Testing, Win-Loss Analysis, User Research & Customer Interviews, Analyst Relations, Loyalty Programs, Email Marketing, Product Validation, Community Building & Management, Keynote Storytelling, Product Demos, Event Branding & Messaging, Podcast Production, Public Speaking
+
+## Tools & Code
+
+API documentation (OpenAPI 3.0), Developer experience (DevEx), HTML, CSS, JavaScript, JSON, Markdown, Figma, Looker, Claude, ChatGPT, Gemini, Perplexity, GitHub, PostHog, Intercom, Descript, Pendo, HubSpot, Sendgrid
+
+## Selected Work
+
+### VTEX Vision — 17-Product Launch
+- Company: VTEX
+- Year: 2023–24
+- Tags: Global, Campaign
+- Award: Awwwards HM
+- Metric: 5M+ reach in 30 days
+- Problem: VTEX needed to execute its first semiannual global product launch campaign covering 17 products simultaneously, coordinating across engineering, product, design, legal, PR, and external media partners — without a dedicated launch ops function.
+- Solution: Led the full GTM motion end-to-end as sole PMM. Built the launch playbook, coordinated 15+ internal teams and 4 external suppliers, created product messaging for 17 products, developed video scripts and storyboards, managed PR, social, email, and landing page production.
+- Outcomes:
+  - 5M+ reach in 30 days
+  - 300+ media pieces within 30 days of launch
+  - 40+ B2B upsell opps impacted by lead-gen campaign
+  - Awwwards honorable mention for VTEX Vision landing page
+- Links:
+  - VTEX Vision Awwward: https://www.awwwards.com/sites/vtex-vision-spring-24
+
+### VTEX Developer Portal
+- Company: VTEX
+- Year: 2019–23
+- Tags: Docs, Leadership
+- Award: DevPortal Award
+- Metric: 35K+ devs served monthly
+- Problem: When I joined VTEX as a tech writing intern, our 'Dev Portal' was a Postman collection kept by backend devs. As the product grew to tailor composable experiences, VTEX's developer portal needed to serve 35,000+ developers across 80+ countries with documentation competitive with portals built by companies with significantly more resources — built from scratch.
+- Solution: Co-created an award-winning developer portal from scratch as an open-source project. Documented 50+ REST API endpoints and 30+ API integration guides using OpenAPI/Swagger 3.0. Built content architecture with reading journey design, diagrams, and glossaries. Developed UX Writing guidelines. As Technical Writing Manager, led a team of 4 writers across recruitment, onboarding, mentoring, and quality standards.
+- Outcomes:
+  - 35,000+ developers across 80+ countries served monthly
+  - DevPortal Award 2023 — Best Visual Interface (alongside Spotify, Miro, React, Mercedes-Benz)
+  - Also nominated: Best Visual Design, Best API Reference Documentation
+  - 5 documentation reader personas from 140 developer survey responses
+  - 27+ tools and automations documented and maintained
+- Links:
+  - VTEX Dev Portal: https://developers.vtex.com/
+  - Dev Portal Awards: https://devportalawards.org/nominees/2023/vtex
+
+### Mobile Feed GTM
+- Company: iConnections
+- Year: 2025–26
+- Tags: Mobile, Launch
+- Metric: 24% memberbase reach in first 5 months
+- Problem: iConnections network allocators had no centralized, habit-forming surface in the mobile app. Platform engagement was mainly event-driven and task-oriented.
+- Solution: Defined and executed the full GTM plan for the Mobile Feed — a personalized, social-media-style homepage for allocators. Co-created 200+ content cards with Research and Content teams. Produced the full launch campaign: 5 promotional videos, 5 social media posts, 10 push notifications, and 1 email.
+- Outcomes:
+  - 360 unique users in first 35 days
+  - 200+ content cards created for launch
+  - 43,975 feed session starts at 5 months
+  - 24% of LP memberbase reached at 5 months since release — exceeds 10–20% 'established surface' benchmark
+  - ~2.3 sessions/user/week — above average for Finance/B2B apps
+- Links:
+  - Demo video: https://www.youtube.com/watch?v=jErZt5G5iQ4
+  - Promo video: https://www.youtube.com/watch?v=KvQ8aoJXz-Q&list=PLr2BEWRC9MDyhqK_9-N9VxOqef8lhxTtQ&index=22
+
+### Allocator Pro Loyalty Program
+- Company: iConnections
+- Year: 2026
+- Tags: New Product
+- Metric: 200 beta members
+- Problem: iConnections needed a structured way to increase platform stickiness among its highest-value users — allocators. No loyalty or membership program existed; retention was mostly event-driven, not platform-driven.
+- Solution: Built a tiered membership loyalty program from concept to live product. Owned the full scope, collaborating with Product, Investor Relations and Event Ops to create: tier architecture design, campaign strategy, in-platform experience design, and premium event logistics. Positioned Allocator Pro as a premium access layer linking platform engagement to exclusive in-person benefits.
+- Outcomes:
+  - 200 beta members at launch
+  - Built from zero to live product — full end-to-end ownership
+  - Live product + membership management dashboard in platform
+- Links:
+  - Allocator Pro: https://iconnections.io/allocator-pro/
+
+### Platform Weekly Active User Growth
+- Company: iConnections
+- Year: 2025
+- Tags: Lifecycle, Enablement
+- Metric: 61% Weekly Active User Lift
+- Problem: With flagship events across the US, Europe, and Asia attracting over 7,000 investors and fund managers, the iConnections platform and mobile app saw peak usage during event seasons. Off-season retention was the primary challenge, as events drove the majority of platform activity. The goal was to build a structured, year-round lifecycle program to increase baseline platform engagement and reduce reliance on event-driven usage spikes.
+- Solution: Developed ongoing product comms including onboarding emails and push notifications. Created in-app messaging (posts, product tours, banners, surveys) to improve customer education and feature discoverability. Built a 2-month platform-only sales enablement program for client-facing teams — trainings, mock demos, pitch decks, and sell sheets.
+- Outcomes:
+  - 61% structural lift in non-event WAU baseline (summer 2024 → summer 2025)
+  - Subscriber WAU grew 19x over the tracked period
+  - 53% of users onboarded with new platform emails increased web sessions in first 30 days
+  - Subscriber share of WAU reached 92% (Feb 2026), up from ~56% in July 2024
+
+### Re-engagement Experiment
+- Company: iConnections
+- Year: 2025
+- Tags: Experiment, Lifecycle
+- Metric: 25.9% churned users reactivated
+- Problem: A significant cohort of fund managers and allocators had not logged into the platform for 90+ days, considered essentially churned. No prior reengagement strategy existed for this group.
+- Solution: Designed and executed a 4-month structured experiment: 5 campaign hypotheses tested, segmentation framework developed to identify cohorts most likely to respond, cross-referenced open rates, click rates, and platform activity to surface what drove re-engagement for allocators and fund managers.
+- Outcomes:
+  - 25.9% of churned customers logged back in
+  - ~39,000+ emails delivered across 48 campaigns
+  - 5 campaign hypotheses tested over 4 months
+  - ~38% reactivation in highest-ROI segment (90–180 day dormant users)
+  - Findings directly informed the 2026 full reengagement program
+
+### VTEX FastStore GTM
+- Company: VTEX
+- Year: 2023–24
+- Tags: Developer GTM, B2B
+- Metric: Full-funnel (digital + event + sales)
+- Problem: FastStore was VTEX's most technically modern storefront but competed internally against legacy CMS solutions that existing clients already had. Dual positioning challenge: win externally against competing technologies and earn internal recommendation from VTEX sales and CS teams. Real decision-makers were developers.
+- Solution: Developed dual-layer GTM strategy for developer and business buyer audiences. Ran integrated campaign: online activation, sales enablement materials, internal training for commercial teams, and physical activation at VTEX Day (booth + mainstage presentation).
+- Outcomes:
+  - Mainstage presentation at VTEX Day
+  - Internal sales and CS alignment program
+  - Enterprise case study: Hearst
+
+### Tech Writing BR Community
+- Company: Independent
+- Year: 2021–present
+- Tags: Community, Co-founder
+- Metric: 300+ members
+- Problem: After a few years as a tech writer and podcast host, I kept bumping into the same gap: I was talking to tech writers in Romania, India, the US — but couldn't find my own people in Brazil. Brazilian tech writers were isolated from each other and disconnected from the global practice. There was no local community for professional development, peer support, or networking.
+- Solution: Three of us ran an experiment. We made a Google Slide deck, a logo built on pre-AI design skills, and dropped a calendar invite into the void. We used our personal Google Meet accounts, because really — who was going to show up? The answer was: more people than the platform could hold. Co-founded Tech Writing BR, still the only technical writing community in Brazil, now with volunteers across the country, book clubs, online forums, job board, and ongoing webinars.
+- Outcomes:
+  - 300+ members
+  - Only technical writing community in Brazil — 6+ years active
+  - Volunteers across the country, ongoing book clubs and webinars
+  - Book club produced 7 public blog articles translating technical content from English to Portuguese
+- Links:
+  - Tech Writing BR community: https://www.techwriting.com.br/
+
+### Events & Conferences
+- Company: iConnections | VTEX | AIESEC
+- Year: 2018–present
+- Tags: Events, Conferences
+- Metric: 30K attendees at flagship events
+- Problem: Bringing digital product strategy to in-person experiences at scale. Events aren't just logistics — they're the moment your digital messaging has to survive contact with a room full of real people.
+- Solution: Platform pavilions, product demos at scale, in-person campaign activations. At VTEX Day (30,000+ attendees) led the product demo area and mainstage FastStore presentation. At Global Alts, led the platform pavilion area design and user engagement activities. Also led activation of the loyalty program (7,000+ attendees) blending platform and in-person premium service. Earlier career: organized conferences for AIESEC in Brazil and Mexico, including international congresses with 1,000+ attendees.
+- Outcomes:
+  - 6 cities across 4 continents (Miami, New York, Singapore, São Paulo, Mexico City, Panama City)
+  - 3 product demo areas in global conferences
+- Links:
+  - iConnections Global Alts: https://iconnections.io/events/flagship-events/
+  - VTEX Day: https://vtexday.vtex.com/
+
+### The Manu<script> Podcast
+- Company: Independent
+- Year: 2020–24
+- Tags: Podcast, Content
+- Metric: 30+ episodes, 7+ countries
+- Problem: In 2020, tech writing was just starting to surface as a career in Brazil, and I had a question I couldn't answer alone: if what we're doing is called tech writing, how do others actually do it? What can we learn from them to scale what we build? I wanted to talk to tech writers around the world, but I didn't have a platform or an audience. I had to build both from scratch.
+- Solution: So a colleague and I started a podcast. It quickly expanded beyond tech writers to anyone living at the intersection of writing and technology. Every episode forced me to deeply research a person's career, industry, and role before we spoke.
+- Outcomes:
+  - 30+ episodes published
+  - Guests from 7+ countries (Brazil, USA, UK, India, Romania, Singapore, and others)
+- Links:
+  - The Manuscript on Spotify: https://open.spotify.com/show/3fxF61LYR4BBDAv6YhZV5r
+
+### FrameRoom — Side Project
+- Company: Independent
+- Year: 2026
+- Tags: Side Project, Shipped
+- Metric: Live open-source app
+- Problem: FrameRoom started because my best friend moved into a new place and we wanted to hang posters. Needed a way to visualize gallery wall layouts before committing to nail holes — built for personal use and then shipped. Also an opportunity to explore UX and AI-assisted development.
+- Solution: Vibe-coded a browser-based gallery wall planning app built using AI-assisted development. Upload photos of art, remove backgrounds, visualize layouts on a virtual wall, drag-drop until it's right. No account, no install, no server.
+- Outcomes:
+  - Shipped as a live app
+  - Open source on GitHub
+  - 1 shipped side project demonstrating ability to use AI as a development amplifier
+- Links:
+  - Live app: https://jumeyermattosarruda.github.io/Gallery-Wall-Builder/
+  - Open Source Repo: https://github.com/jumeyermattosarruda/Gallery-Wall-Builder
+
+---
+*Last updated: 2026*

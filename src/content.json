@@ -93,6 +93,9 @@
         "300+ media pieces within 30 days of launch",
         "40+ B2B upsell opps impacted by lead-gen campaign",
         "Awwwards honorable mention for VTEX Vision landing page"
+      ],
+      "links": [
+        { "label": "VTEX Vision Awwward", "url": "https://www.awwwards.com/sites/vtex-vision-spring-24" }
       ]
     },
     {
@@ -117,6 +120,10 @@
         "Also nominated: Best Visual Design, Best API Reference Documentation",
         "5 documentation reader personas from 140 developer survey responses",
         "27+ tools and automations documented and maintained"
+      ],
+      "links": [
+        { "label": "VTEX Dev Portal", "url": "https://developers.vtex.com/" },
+        { "label": "Dev Portal Awards", "url": "https://devportalawards.org/nominees/2023/vtex" }
       ]
     },
     {
@@ -140,6 +147,10 @@
         "43,975 feed session starts at 5 months",
         "24% of LP memberbase reached at 5 months since release— exceeds 10–20% 'established surface' benchmark",
         "~2.3 sessions/user/week — above average for Finance/B2B apps"
+      ],
+      "links": [
+        { "label": "Demo video", "url": "https://www.youtube.com/watch?v=jErZt5G5iQ4" },
+        { "label": "Promo video", "url": "https://www.youtube.com/watch?v=KvQ8aoJXz-Q&list=PLr2BEWRC9MDyhqK_9-N9VxOqef8lhxTtQ&index=22" }
       ]
     },
     {
@@ -160,6 +171,9 @@
         "200 beta members at launch",
         "Built from zero to live product — full end-to-end ownership",
         "Live product + membership management dashboard in platform"
+      ],
+      "links": [
+        { "label": "Allocator Pro", "url": "https://iconnections.io/allocator-pro/" }
       ]
     },
     {
@@ -174,6 +188,7 @@
       "metric": "61%",
       "metricLabel": "Weekly Active User Lift",
       "imgLabel": "email & push designs",
+      "image": "/images/work/Platform Weekly Active User Growth.png",
       "problem": "With flagship events across the US, Europe, and Asia attracting over 7,000 investors and fund managers, the iConnections platform and mobile app saw peak usage during event seasons. Off-season retention was the primary challenge, as events drove the majority of platform activity. The goal was to build a structured, year-round lifecycle program to increase baseline platform engagement and reduce reliance on event-driven usage spikes.",
       "solution": "Developed ongoing product comms including onboarding emails and push notifications. Created in-app messaging (posts, product tours, banners, surveys) to improve customer education and feature discoverability. Built a 2-month platform-only sales enablement program for client-facing teams — trainings, mock demos, pitch decks, and sell sheets.",
       "outcomes": [
@@ -247,6 +262,9 @@
         "Only technical writing community in Brazil — 6+ years active",
         "Volunteers across the country, ongoing book clubs and webinars",
         "Book club produced 7 public blog articles translating technical content from English to Portuguese"
+      ],
+      "links": [
+        { "label": "Tech Writing BR community", "url": "https://www.techwriting.com.br/" }
       ]
     },
     {
@@ -267,6 +285,10 @@
       "outcomes": [
         "6 cities across 4 continents (Miami, New York, Singapore, São Paulo, Mexico City, Panama City)",
         "3 product demo areas in global conferences"
+      ],
+      "links": [
+        { "label": "iConnections Global Alts", "url": "https://iconnections.io/events/flagship-events/" },
+        { "label": "VTEX Day", "url": "https://vtexday.vtex.com/" }
       ]
     },
     {
@@ -287,6 +309,9 @@
       "outcomes": [
         "30+ episodes published",
         "Guests from 7+ countries (Brazil, USA, UK, India, Romania, Singapore, and others)"
+      ],
+      "links": [
+        { "label": "The Manuscript on Spotify", "url": "https://open.spotify.com/show/3fxF61LYR4BBDAv6YhZV5r" }
       ]
     },
     {
@@ -308,32 +333,62 @@
         "Shipped as a live app",
         "Open source on GitHub",
         "1 shipped side project demonstrating ability to use AI as a development amplifier"
+      ],
+      "links": [
+        { "label": "Live app", "url": "https://jumeyermattosarruda.github.io/Gallery-Wall-Builder/" },
+        { "label": "Open Source Repo", "url": "https://github.com/jumeyermattosarruda/Gallery-Wall-Builder" }
       ]
     }
   ],
   "skills": [
-    "GTM Strategy",
-    "Positioning & Messaging",
-    "Lifecycle Comms",
-    "Sales Enablement",
-    "Developer PMM",
-    "Data Analysis",
-    "Video Scripting",
-    "Content Strategy",
-    "API Documentation",
-    "GitHub",
-    "HubSpot",
-    "Intercom",
-    "Pendo",
-    "Salesforce",
-    "Looker",
-    "PowerBI",
+    "Go-to-Market Strategy",
+    "Product Positioning",
+    "Messaging Frameworks",
+    "Competitive Analysis",
+    "Market Research",
+    "Developer GTM",
+    "Battlecards",
+    "Demo Videos",
+    "Landing Pages",
+    "Sales Enablement Assets",
+    "User Adoption & Engagement",
+    "Lifecycle Marketing",
+    "Reengagement Campaigns",
+    "Full-Funnel Campaigns",
+    "A/B Testing",
+    "Win-Loss Analysis",
+    "User Research & Customer Interviews",
+    "Analyst Relations",
+    "Loyalty Programs",
+    "Email Marketing",
+    "Product Validation",
+    "Community Building & Management",
+    "Keynote Storytelling",
+    "Product Demos",
+    "Event Branding & Messaging",
+    "Podcast Production",
+    "Public Speaking"
+  ],
+  "tools": [
+    "API documentation (OpenAPI 3.0)",
+    "Developer experience (DevEx)",
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "JSON",
+    "Markdown",
     "Figma",
-    "Notion",
-    "OpenAPI/Swagger",
-    "Sendgrid",
-    "Screenstudio",
-    "ElevenLabs",
-    "Descript"
+    "Looker",
+    "Claude",
+    "ChatGPT",
+    "Gemini",
+    "Perplexity",
+    "GitHub",
+    "PostHog",
+    "Intercom",
+    "Descript",
+    "Pendo",
+    "HubSpot",
+    "Sendgrid"
   ]
 }
