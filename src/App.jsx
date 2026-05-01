@@ -9,7 +9,9 @@ const base = import.meta.env.BASE_URL
 
 function withBase(p) {
   if (!p || p.startsWith('http')) return p
-  return base.replace(/\/$/, '') + '/' + p.replace(/^\//, '')
+  // Encode each segment so spaces, &, —, <> etc. don't break CSS url()
+  const encoded = '/' + p.split('/').filter(Boolean).map(encodeURIComponent).join('/')
+  return base.replace(/\/$/, '') + encoded
 }
 
 const content = {
