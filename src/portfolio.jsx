@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import posthog from 'posthog-js'
 import {
   PhotoSlideshow, LinkedInBtn, GitHubBtn,
   AwardStrip, Eyebrow, ImgPlaceholder, Tag,
@@ -270,7 +271,7 @@ const Contact = ({ profile, mobile, titleScale = 1 }) => (
         Let&apos;s <em style={{ fontStyle: 'italic', color: 'var(--accent)' }}>chat.</em>
       </h2>
       <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', alignItems: 'center' }}>
-        <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" style={{
+        <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" onClick={() => posthog.capture('contact reached out', { href: profile.linkedin })} style={{
           display: 'inline-flex', alignItems: 'center', gap: 12,
           background: 'var(--accent)', color: 'var(--brown-900)',
           padding: mobile ? '12px 20px' : '16px 28px',
