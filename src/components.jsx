@@ -402,6 +402,19 @@ export const VerticalTimeline = ({ timeline, animate = true }) => {
 export const ProjectCard = ({ project, onOpen, layout = 'grid', titleScale = 1 }) => {
   const [hover, setHover] = useState(false)
 
+  // Shared "See Details" button style matching existing outline button pattern
+  const seeDetailsBtn = {
+    marginTop: 16,
+    display: 'flex', alignItems: 'center', justifyContent: 'center',
+    width: '100%',
+    background: 'transparent', color: 'var(--brown-900)',
+    border: '1px solid var(--brown-900)',
+    padding: '12px 20px',
+    fontFamily: 'DM Sans, sans-serif', fontSize: 13, fontWeight: 500,
+    letterSpacing: 0.2, cursor: 'pointer',
+    transition: 'all 0.25s ease', borderRadius: 5
+  }
+
   if (layout === 'mobile') {
     return (
       <div
@@ -437,9 +450,11 @@ export const ProjectCard = ({ project, onOpen, layout = 'grid', titleScale = 1 }
             <div style={{
               fontFamily: 'DM Sans, sans-serif', fontSize: 11,
               letterSpacing: 1.5, textTransform: 'uppercase',
-              color: 'var(--brown-500)', marginTop: 6
+              color: 'var(--brown-500)', marginTop: 12
             }}>{project.metricLabel}</div>
           </div>
+          {/* CHANGE 1: See Details button */}
+          <button style={seeDetailsBtn}>See Details</button>
         </div>
       </div>
     )
@@ -475,6 +490,8 @@ export const ProjectCard = ({ project, onOpen, layout = 'grid', titleScale = 1 }
           <div style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 13, color: 'var(--brown-600)', maxWidth: 480, lineHeight: 1.5 }}>
             {project.problem}
           </div>
+          {/* CHANGE 1: See Details button */}
+          <button style={{ ...seeDetailsBtn, marginTop: 14, width: 'auto' }}>See Details</button>
         </div>
         <div style={{ textAlign: 'right', minWidth: 120 }}>
           <div style={{
@@ -485,7 +502,7 @@ export const ProjectCard = ({ project, onOpen, layout = 'grid', titleScale = 1 }
           <div style={{
             fontFamily: 'DM Sans, sans-serif', fontSize: 10,
             letterSpacing: 1.5, textTransform: 'uppercase',
-            color: 'var(--brown-500)', marginTop: 6
+            color: 'var(--brown-500)', marginTop: 12
           }}>{project.metricLabel}</div>
         </div>
       </div>
@@ -524,10 +541,11 @@ export const ProjectCard = ({ project, onOpen, layout = 'grid', titleScale = 1 }
             fontSize: 50, fontWeight: 300, lineHeight: 0.9,
             color: 'var(--brown-900)', letterSpacing: -1.5
           }}>{project.metric}</div>
+          {/* CHANGE 6: increased marginTop from 4 to 12 to fix label overlap */}
           <div style={{
             fontFamily: 'DM Sans, sans-serif', fontSize: 11,
             letterSpacing: 1.5, textTransform: 'uppercase',
-            color: 'var(--brown-500)', marginTop: 4
+            color: 'var(--brown-500)', marginTop: 12
           }}>{project.metricLabel}</div>
         </div>
         <span style={{
@@ -536,22 +554,31 @@ export const ProjectCard = ({ project, onOpen, layout = 'grid', titleScale = 1 }
           opacity: hover ? 1 : 0, transition: 'opacity 0.3s'
         }}>↗</span>
       </div>
+      {/* CHANGE 1: See Details button */}
+      <button style={seeDetailsBtn}>See Details</button>
     </div>
   )
 }
 
 // ─── Project modal ────────────────────────────────────────────
-export const ProjectModal = ({ project, onClose }) => {
+export const ProjectModal = ({ project, onClose, mobile = false }) => {
+  const [lightboxImg, setLightboxImg] = useState(null)
+
   useEffect(() => {
     if (!project) return
-    const onKey = (e) => { if (e.key === 'Escape') onClose() }
+    const onKey = (e) => {
+      if (e.key === 'Escape') {
+        if (lightboxImg) setLightboxImg(null)
+        else onClose()
+      }
+    }
     window.addEventListener('keydown', onKey)
     document.body.style.overflow = 'hidden'
     return () => {
       window.removeEventListener('keydown', onKey)
       document.body.style.overflow = ''
     }
-  }, [project, onClose])
+  }, [project, onClose, lightboxImg])
 
   if (!project) return null
 
@@ -560,114 +587,211 @@ export const ProjectModal = ({ project, onClose }) => {
     onClose()
   }
 
+  const hasGallery = project.images && project.images.length > 0
+  const bodyPadding = mobile ? '32px 16px 48px' : '48px 64px 64px'
+  const galleryPadding = mobile ? '16px 16px 0' : '24px 64px 0'
+
   return (
-    <div
-      onClick={handleClose}
-      style={{
-        position: 'fixed', inset: 0, background: 'rgba(45, 30, 22, 0.55)',
-        backdropFilter: 'blur(8px)',
-        display: 'flex', alignItems: 'center', justifyContent: 'center',
-        zIndex: 1000, padding: 32, animation: 'fadeIn 0.3s ease'
-      }}
-    >
+    <>
       <div
-        onClick={(e) => e.stopPropagation()}
+        onClick={handleClose}
         style={{
-          background: 'var(--bg)', width: '100%', maxWidth: 920,
-          maxHeight: '92vh', overflow: 'auto', position: 'relative',
-          borderRadius: 5, animation: 'slideUp 0.4s cubic-bezier(.2,.8,.2,1)'
+          position: 'fixed', inset: 0, background: 'rgba(45, 30, 22, 0.55)',
+          backdropFilter: 'blur(8px)',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          zIndex: 1000,
+          padding: mobile ? 0 : 32,
+          animation: 'fadeIn 0.3s ease'
         }}
       >
-        <button
-          onClick={handleClose}
+        <div
+          onClick={(e) => e.stopPropagation()}
           style={{
-            position: 'absolute', top: 24, right: 24, zIndex: 10,
-            width: 44, height: 44, borderRadius: '50%',
-            background: 'var(--bg)', border: '1px solid var(--brown-300)',
-            fontFamily: 'DM Sans, sans-serif', fontSize: 20, color: 'var(--brown-900)',
-            cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center'
+            background: 'var(--bg)', width: '100%',
+            maxWidth: mobile ? '100vw' : 920,
+            maxHeight: mobile ? '100svh' : '92vh',
+            overflow: 'auto', overflowX: 'hidden',
+            position: 'relative',
+            borderRadius: mobile ? 0 : 5,
+            animation: 'slideUp 0.4s cubic-bezier(.2,.8,.2,1)'
           }}
-        >×</button>
-        <ImgPlaceholder height={400} label={project.imgLabel} src={project.image} style={{ borderRadius: '5px 5px 0 0' }} />
-        <div style={{ padding: '48px 64px 64px' }}>
-          <div style={{ display: 'flex', gap: 8, marginBottom: 18, alignItems: 'center' }}>
-            <Eyebrow>{project.company} · {project.year}</Eyebrow>
-            {project.award && <Tag variant="award">★ {project.award}</Tag>}
-          </div>
-          <h2 style={{
-            fontFamily: 'Cormorant Garamond, serif',
-            fontSize: 64, fontWeight: 300, lineHeight: 1.0,
-            letterSpacing: -1.5, color: 'var(--brown-900)', marginBottom: 32
-          }}>{project.title}</h2>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 48, marginBottom: 48 }}>
-            <div>
-              <Eyebrow>Problem</Eyebrow>
-              <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 16, lineHeight: 1.6, color: 'var(--brown-800)', marginTop: 14 }}>{project.problem}</p>
-            </div>
-            <div>
-              <Eyebrow>Solution</Eyebrow>
-              <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 16, lineHeight: 1.6, color: 'var(--brown-800)', marginTop: 14 }}>{project.solution}</p>
-              {project.links && project.links.length > 0 && (
-                <div style={{ marginTop: 20, display: 'flex', flexWrap: 'wrap', gap: 8 }}>
-                  {project.links.map((link, i) => (
-                    <a
-                      key={i}
-                      href={link.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={() => posthog.capture('project link clicked', { project_id: project.id, project_title: project.title, link_label: link.label, link_url: link.url })}
-                      style={{
-                        display: 'inline-block', padding: '4px 12px',
-                        background: 'transparent', color: 'var(--brown-800)',
-                        border: '1px solid var(--brown-400)',
-                        fontFamily: 'DM Sans, sans-serif', fontSize: 11, fontWeight: 500,
-                        letterSpacing: 0.3, borderRadius: 999,
-                        textDecoration: 'none', transition: 'all 0.2s ease'
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.background = 'var(--brown-900)'
-                        e.currentTarget.style.color = '#fff'
-                        e.currentTarget.style.borderColor = 'var(--brown-900)'
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.background = 'transparent'
-                        e.currentTarget.style.color = 'var(--brown-800)'
-                        e.currentTarget.style.borderColor = 'var(--brown-400)'
-                      }}
-                    >↗ {link.label}</a>
-                  ))}
-                </div>
-              )}
-            </div>
-          </div>
-          <div style={{ borderTop: '1px solid var(--brown-200)', paddingTop: 32 }}>
-            <Eyebrow>Outcomes</Eyebrow>
-            <div style={{ marginTop: 22 }}>
-              {project.outcomes.map((o, i) => (
-                <div key={i} style={{
-                  display: 'flex', gap: 24, padding: '18px 0',
-                  borderBottom: i < project.outcomes.length - 1 ? '1px solid var(--brown-100)' : 'none',
-                  alignItems: 'baseline'
-                }}>
-                  <span style={{
-                    fontFamily: 'Cormorant Garamond, serif', fontSize: 24,
-                    fontWeight: 300, color: 'var(--accent)', minWidth: 40
-                  }}>0{i + 1}</span>
-                  <span style={{
-                    fontFamily: 'Cormorant Garamond, serif', fontSize: 26,
-                    fontWeight: 300, color: 'var(--brown-900)', lineHeight: 1.3
-                  }}>{o}</span>
-                </div>
+        >
+          <button
+            onClick={handleClose}
+            style={{
+              position: 'absolute', top: 24, right: 24, zIndex: 10,
+              width: 44, height: 44, borderRadius: '50%',
+              background: 'var(--bg)', border: '1px solid var(--brown-300)',
+              fontFamily: 'DM Sans, sans-serif', fontSize: 20, color: 'var(--brown-900)',
+              cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center'
+            }}
+          >×</button>
+
+          <ImgPlaceholder
+            height={mobile ? 240 : 400}
+            label={project.imgLabel}
+            src={project.image}
+            style={{ borderRadius: mobile ? 0 : '5px 5px 0 0' }}
+          />
+
+          {/* CHANGE 2: Additional images gallery */}
+          {hasGallery && (
+            <div style={{
+              padding: galleryPadding,
+              display: 'grid',
+              gridTemplateColumns: mobile ? 'repeat(2, 1fr)' : 'repeat(auto-fill, minmax(200px, 1fr))',
+              gap: 10
+            }}>
+              {project.images.map((img, idx) => (
+                <div
+                  key={idx}
+                  onClick={(e) => { e.stopPropagation(); setLightboxImg(img) }}
+                  style={{
+                    height: 140, borderRadius: 5, overflow: 'hidden',
+                    cursor: 'zoom-in', flexShrink: 0,
+                    background: img.src
+                      ? `url('${img.src}') center/cover`
+                      : 'var(--accent-soft)',
+                    border: '1px solid var(--brown-200)',
+                    transition: 'opacity 0.2s'
+                  }}
+                  title={img.alt}
+                />
               ))}
             </div>
-          </div>
-          {project.tags && (
-            <div style={{ marginTop: 40, display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-              {project.tags.map((t) => <Tag key={t}>{t}</Tag>)}
-            </div>
           )}
+
+          <div style={{ padding: bodyPadding }}>
+            <div style={{ display: 'flex', gap: 8, marginBottom: 18, alignItems: 'center' }}>
+              <Eyebrow>{project.company} · {project.year}</Eyebrow>
+              {project.award && <Tag variant="award">★ {project.award}</Tag>}
+            </div>
+            <h2 style={{
+              fontFamily: 'Cormorant Garamond, serif',
+              fontSize: mobile ? 40 : 64, fontWeight: 300, lineHeight: 1.0,
+              letterSpacing: mobile ? -1 : -1.5, color: 'var(--brown-900)', marginBottom: 32
+            }}>{project.title}</h2>
+
+            {/* CHANGE 3 Fix A: single column on mobile, two columns on desktop */}
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: mobile ? '1fr' : '1fr 1fr',
+              gap: mobile ? 28 : 48,
+              marginBottom: 48
+            }}>
+              <div>
+                <Eyebrow>Problem</Eyebrow>
+                <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 16, lineHeight: 1.6, color: 'var(--brown-800)', marginTop: 14 }}>{project.problem}</p>
+              </div>
+              <div>
+                <Eyebrow>Solution</Eyebrow>
+                <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 16, lineHeight: 1.6, color: 'var(--brown-800)', marginTop: 14 }}>{project.solution}</p>
+                {project.links && project.links.length > 0 && (
+                  <div style={{ marginTop: 20, display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+                    {project.links.map((link, i) => (
+                      <a
+                        key={i}
+                        href={link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={() => posthog.capture('project link clicked', { project_id: project.id, project_title: project.title, link_label: link.label, link_url: link.url })}
+                        style={{
+                          display: 'inline-block', padding: '4px 12px',
+                          background: 'transparent', color: 'var(--brown-800)',
+                          border: '1px solid var(--brown-400)',
+                          fontFamily: 'DM Sans, sans-serif', fontSize: 11, fontWeight: 500,
+                          letterSpacing: 0.3, borderRadius: 999,
+                          textDecoration: 'none', transition: 'all 0.2s ease'
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.background = 'var(--brown-900)'
+                          e.currentTarget.style.color = '#fff'
+                          e.currentTarget.style.borderColor = 'var(--brown-900)'
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.background = 'transparent'
+                          e.currentTarget.style.color = 'var(--brown-800)'
+                          e.currentTarget.style.borderColor = 'var(--brown-400)'
+                        }}
+                      >↗ {link.label}</a>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
+            <div style={{ borderTop: '1px solid var(--brown-200)', paddingTop: 32 }}>
+              <Eyebrow>Outcomes</Eyebrow>
+              <div style={{ marginTop: 22 }}>
+                {project.outcomes.map((o, i) => (
+                  <div key={i} style={{
+                    display: 'flex', gap: 24, padding: '18px 0',
+                    borderBottom: i < project.outcomes.length - 1 ? '1px solid var(--brown-100)' : 'none',
+                    alignItems: 'baseline'
+                  }}>
+                    <span style={{
+                      fontFamily: 'Cormorant Garamond, serif', fontSize: 24,
+                      fontWeight: 300, color: 'var(--accent)', minWidth: 40
+                    }}>0{i + 1}</span>
+                    <span style={{
+                      fontFamily: 'Cormorant Garamond, serif', fontSize: 26,
+                      fontWeight: 300, color: 'var(--brown-900)', lineHeight: 1.3
+                    }}>{o}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            {project.tags && (
+              <div style={{ marginTop: 40, display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+                {project.tags.map((t) => <Tag key={t}>{t}</Tag>)}
+              </div>
+            )}
+          </div>
         </div>
       </div>
-    </div>
+
+      {/* CHANGE 2: Lightbox overlay */}
+      {lightboxImg && (
+        <div
+          onClick={() => setLightboxImg(null)}
+          style={{
+            position: 'fixed', inset: 0,
+            background: 'rgba(0, 0, 0, 0.92)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            zIndex: 2000, cursor: 'zoom-out',
+            animation: 'fadeIn 0.2s ease'
+          }}
+        >
+          <button
+            onClick={() => setLightboxImg(null)}
+            style={{
+              position: 'absolute', top: 20, right: 20,
+              width: 44, height: 44, borderRadius: '50%',
+              background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.3)',
+              color: '#fff', fontSize: 20, cursor: 'pointer',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              fontFamily: 'DM Sans, sans-serif'
+            }}
+          >×</button>
+          <img
+            src={lightboxImg.src}
+            alt={lightboxImg.alt || ''}
+            onClick={(e) => e.stopPropagation()}
+            style={{
+              maxWidth: '90vw', maxHeight: '90vh',
+              objectFit: 'contain', borderRadius: 5,
+              cursor: 'default'
+            }}
+          />
+          {lightboxImg.alt && (
+            <div style={{
+              position: 'absolute', bottom: 24, left: 0, right: 0,
+              textAlign: 'center',
+              fontFamily: 'DM Sans, sans-serif', fontSize: 12,
+              color: 'rgba(255,255,255,0.6)', letterSpacing: 0.5
+            }}>{lightboxImg.alt}</div>
+          )}
+        </div>
+      )}
+    </>
   )
 }

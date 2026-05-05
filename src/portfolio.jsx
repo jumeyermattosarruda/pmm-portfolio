@@ -43,13 +43,16 @@ const TopNav = ({ profile, mobile }) => (
 // ─── Hero ─────────────────────────────────────────────────────
 const Hero = ({ profile, mobile, titleScale = 1 }) => (
   <section style={{
-    padding: mobile ? '40px 24px 60px' : '80px 80px 100px',
+    /* CHANGE 5: reduced top padding from 80px to 40px (desktop) to fit hero above the fold */
+    padding: mobile ? '40px 24px 60px' : '40px 80px 80px',
     borderBottom: '1px solid var(--brown-200)'
   }}>
     <div style={{
       display: mobile ? 'block' : 'grid',
       gridTemplateColumns: mobile ? null : '1fr auto',
-      gap: mobile ? 40 : 80, alignItems: 'end'
+      gap: mobile ? 40 : 80,
+      /* CHANGE 4: vertically center the photo with the text block on desktop */
+      alignItems: 'center'
     }}>
       <div>
         <div style={{
@@ -87,7 +90,12 @@ const Hero = ({ profile, mobile, titleScale = 1 }) => (
           <GitHubBtn size={mobile ? 'md' : 'lg'} variant="outline" href={profile.github} />
         </div>
       </div>
-      <div style={{ marginTop: mobile ? 60 : 0 }}>
+      {/* CHANGE 4: center carousel horizontally on mobile, right-side on desktop (via grid) */}
+      <div style={{
+        marginTop: mobile ? 60 : 0,
+        display: 'flex', flexDirection: 'column',
+        alignItems: mobile ? 'center' : 'flex-end'
+      }}>
         <PhotoSlideshow size={mobile ? 220 : 280} rounded="50%" images={profile.photos} labels={profile.photos} />
         <div style={{ height: 30 }} />
         <Eyebrow style={{ display: 'block', marginTop: 8, textAlign: 'center' }}>
@@ -323,7 +331,7 @@ export const Portfolio = ({ content, mobile = false, titleScale = 1, layout = 'g
         linkedin={content.profile.linkedin}
       />
       <Contact profile={content.profile} mobile={mobile} titleScale={titleScale} />
-      <ProjectModal project={active} onClose={() => setActive(null)} />
+      <ProjectModal project={active} onClose={() => setActive(null)} mobile={mobile} />
     </div>
   )
 }

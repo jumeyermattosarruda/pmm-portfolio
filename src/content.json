@@ -96,6 +96,9 @@
       ],
       "links": [
         { "label": "VTEX Vision Awwward", "url": "https://www.awwwards.com/sites/vtex-vision-spring-24" }
+      ],
+      "images": [
+        { "src": "assets/images/vtex-vision/campaign-overview.svg", "alt": "VTEX Vision campaign overview — 17-product launch visual summary" }
       ]
     },
     {
@@ -124,7 +127,8 @@
       "links": [
         { "label": "VTEX Dev Portal", "url": "https://developers.vtex.com/" },
         { "label": "Dev Portal Awards", "url": "https://devportalawards.org/nominees/2023/vtex" }
-      ]
+      ],
+      "images": []
     },
     {
       "id": "mobile-feed",
@@ -151,7 +155,8 @@
       "links": [
         { "label": "Demo video", "url": "https://www.youtube.com/watch?v=jErZt5G5iQ4" },
         { "label": "Promo video", "url": "https://www.youtube.com/watch?v=KvQ8aoJXz-Q&list=PLr2BEWRC9MDyhqK_9-N9VxOqef8lhxTtQ&index=22" }
-      ]
+      ],
+      "images": []
     },
     {
       "id": "allocator-pro",
@@ -174,7 +179,8 @@
       ],
       "links": [
         { "label": "Allocator Pro", "url": "https://iconnections.io/allocator-pro/" }
-      ]
+      ],
+      "images": []
     },
     {
       "id": "wau-growth",
@@ -196,7 +202,8 @@
         "Subscriber WAU grew 19x over the tracked period",
         "53% of users onboarded with new platform emails increased web sessions in first 30 days",
         "Subscriber share of WAU reached 92% (Feb 2026), up from ~56% in July 2024"
-      ]
+      ],
+      "images": []
     },
     {
       "id": "reengagement",
@@ -219,7 +226,8 @@
         "5 campaign hypotheses tested over 4 months",
         "~38% reactivation in highest-ROI segment (90–180 day dormant users)",
         "Findings directly informed the 2026 full reengagement program"
-      ]
+      ],
+      "images": []
     },
     {
       "id": "faststore",
@@ -240,7 +248,8 @@
         "Mainstage presentation at VTEX Day",
         "Internal sales and CS alignment program",
         "Enterprise case study: Hearst"
-      ]
+      ],
+      "images": []
     },
     {
       "id": "tech-writing-br",
@@ -265,7 +274,8 @@
       ],
       "links": [
         { "label": "Tech Writing BR community", "url": "https://www.techwriting.com.br/" }
-      ]
+      ],
+      "images": []
     },
     {
       "id": "events",
@@ -289,7 +299,8 @@
       "links": [
         { "label": "iConnections Global Alts", "url": "https://iconnections.io/events/flagship-events/" },
         { "label": "VTEX Day", "url": "https://vtexday.vtex.com/" }
-      ]
+      ],
+      "images": []
     },
     {
       "id": "manuscript-podcast",
@@ -312,7 +323,8 @@
       ],
       "links": [
         { "label": "The Manuscript on Spotify", "url": "https://open.spotify.com/show/3fxF61LYR4BBDAv6YhZV5r" }
-      ]
+      ],
+      "images": []
     },
     {
       "id": "frameroom",
@@ -337,7 +349,8 @@
       "links": [
         { "label": "Live app", "url": "https://jumeyermattosarruda.github.io/Gallery-Wall-Builder/" },
         { "label": "Open Source Repo", "url": "https://github.com/jumeyermattosarruda/Gallery-Wall-Builder" }
-      ]
+      ],
+      "images": []
     }
   ],
   "skills": [

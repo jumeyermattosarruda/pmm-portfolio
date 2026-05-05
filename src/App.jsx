@@ -22,7 +22,8 @@ const content = {
   },
   projects: rawContent.projects.map(p => ({
     ...p,
-    image: withBase(p.image)
+    image: withBase(p.image),
+    images: (p.images || []).map(img => ({ ...img, src: withBase(img.src) }))
   }))
 }
 
